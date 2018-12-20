@@ -9,5 +9,4 @@ class ApplicationController < ActionController::Base
      devise_parameter_sanitizer.permit :account_update,
       keys: %i(name birthday phone avatar avatar_cache)
   end
-
 end
