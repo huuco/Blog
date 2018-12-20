@@ -1,0 +1,19 @@
+.intro-header.banner-home
+  .container
+    .row
+      .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+        .site-heading
+          h1
+            = t ".your_secret"
+
+            = link_to t(".create_post"), new_post_path,
+                           class: "create-post btn btn-sm btn-primary"
+          span.subheading
+            = t ".quote"
+  .container
+    .row
+      .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+          ul#my-items.post-preview
+
+          #infinite-scrolling
+
