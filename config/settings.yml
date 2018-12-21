@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 avatar_default: "avt_default.jpg"
 
 post:
@@ -7,3 +8,6 @@ post:
 rate:
   minimum_rate: 1
   maximum_rate: 5
+=======
+picture_default: "post.jpg"
+>>>>>>> c312721... signup-login-edit-user
