@@ -1,0 +1,19 @@
+//= require demo
+//= require light-bootstrap-dashboard
+//= require_tree .
+//= require_self
+
+@import 'variable';
+
+.fix-background {
+  background-color: $grayer;
+}
+
+.logo {
+  height: 60px;
+}
+
+.fix-logo a {
+  color: $white;
+  text-decoration: none;
+}

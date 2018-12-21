@@ -52,3 +52,6 @@ en:
       search: "Search . . ."
     footer:
       author: "Author"
+  users:
+    edit:
+      update: "Update"
