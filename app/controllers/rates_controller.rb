@@ -9,21 +9,11 @@ class RatesController < ApplicationController
 
  def create
     @rate = current_user.rates.build rate_params
-<<<<<<< HEAD
-    @rate.user = current_user
-=======
-    @rate.user_id = current_user.id
->>>>>>> 7acb049... add comment, edit comment, destroy comment
-    @rate.post_id = params[:post_id]
     if @rate.save
       flash[:success] = t "flash.save_success"
       redirect_to @post
     else
-<<<<<<< HEAD
       respond_to {|format| format.js }
-=======
-      render :new
->>>>>>> 7acb049... add comment, edit comment, destroy comment
     end
  end
 

@@ -1,8 +1,12 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+<<<<<<< acaa75dd1cc51c0264ff8144bb748b8301a23df8
 ruby '2.5.1'
 <<<<<<< HEAD
+=======
+ruby "2.5.1"
+>>>>>>> signup-login-edit-user
 
 gem "bootsnap", ">= 1.1.0", require: false
 gem "bootstrap-sass", "3.3.7"
@@ -29,6 +33,7 @@ gem "social-share-button"
 gem "sqlite3"
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
+<<<<<<< acaa75dd1cc51c0264ff8144bb748b8301a23df8
 gem 'config'
 gem 'kaminari'
 =======
@@ -50,6 +55,8 @@ gem 'config'
 gem 'rails', '~> 5.2.2'
 gem 'sass-rails', '~> 5.0'
 gem 'sqlite3'
+=======
+>>>>>>> signup-login-edit-user
 
 group :development, :test do
   # Call "byebug" anywhere in the code to stop execution and get a debugger console
