@@ -35,6 +35,7 @@ class PostsController < ApplicationController
   def show
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     if @post.rates.blank?
       @average_rate = 0
@@ -48,6 +49,10 @@ class PostsController < ApplicationController
 >>>>>>> 0553381... add like button, share
   end
 
+=======
+
+  end
+>>>>>>> 4b64319... create post
   def destroy
     if @post.destroy
       respond_to do |format|

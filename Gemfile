@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "2.5.1"
+ruby '2.5.1'
 
 gem "bootsnap", ">= 1.1.0", require: false
 gem "bootstrap-sass", "3.3.7"
@@ -10,19 +10,11 @@ gem "ckeditor"
 gem "coffee-rails", "~> 4.2"
 gem "config"
 gem "devise"
-gem "social-share-button"
-<<<<<<< HEAD
-gem "faker"
-gem "figaro"
-gem "ckeditor"
-gem "fog"
-=======
->>>>>>> 7acb049... add comment, edit comment, destroy comment
 gem "faker"
 gem "figaro"
 gem "fog"
-gem "i18n-js"
 gem "font-awesome-rails"
+gem "i18n-js"
 gem "jbuilder", "~> 2.5"
 gem "jquery-rails"
 gem "kaminari"
@@ -36,6 +28,11 @@ gem "social-share-button"
 gem "sqlite3"
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
+gem 'config'
+gem 'kaminari'
+gem 'rails', '~> 5.2.2'
+gem 'sass-rails', '~> 5.0'
+gem 'sqlite3'
 
 group :development, :test do
   # Call "byebug" anywhere in the code to stop execution and get a debugger console

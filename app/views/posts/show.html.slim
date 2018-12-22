@@ -5,19 +5,11 @@ header.intro-header.banner-posts
         .post-heading.word-break
           h2
             = @post.title
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-          p
-            = @post.content
->>>>>>> 0553381... add like button, share
-=======
           p
             = @post.content
             |<p class="review-rating" data-score="
             = @average_rate.star
             | ">
->>>>>>> 7acb049... add comment, edit comment, destroy comment
           span.meta
             = @post.updated_at.strftime(Settings.post.date)
           - if @post.categories.any?
@@ -43,20 +35,11 @@ article
             = link_to t(".delete"), @post, method: :delete,
                            data: {confirm: t(".sure")}, class: "btn btn-danger button_text profile"
         hr
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
         div
           = social_share_button_tag(@post.title, url: post_url(@post), desc: @post.content)
           = render "posts/like_button"
->>>>>>> 0553381... add like button, share
-=======
         div
-          = social_share_button_tag(@post.title, url: post_url(@post), desc: @post.content)
           = link_to "add",  new_post_rate_path(@post), class: "btn btn-primary button_text profile"
-          div
-            = render @post.rates
->>>>>>> 7acb049... add comment, edit comment, destroy comment
         h2
           = t ".comment"
         .form-comment
@@ -76,12 +59,4 @@ article
           - if current_user == @post.user
             = link_to t(".edit_profile"), edit_user_registration_path(@post.user),
                            class: "btn btn-primary button_text profile"
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
       = render "posts/review"
-
->>>>>>> 0553381... add like button, share
-=======
-
->>>>>>> 7acb049... add comment, edit comment, destroy comment

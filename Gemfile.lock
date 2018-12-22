@@ -540,10 +540,6 @@ DEPENDENCIES
   puma (~> 3.11)
   rails (~> 5.2.2)
   rails-i18n (~> 5.1)
-<<<<<<< HEAD
-=======
-  ratyrate
->>>>>>> 7acb049... add comment, edit comment, destroy comment
   sass-rails (~> 5.0)
   selenium-webdriver
   simple_form

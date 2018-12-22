@@ -11,19 +11,9 @@
 // about supported directives.
 //
 //= require jquery
-<<<<<<< HEAD
 //= require rails-ujs
-<<<<<<< HEAD
-//= require bootstrap
-=======
->>>>>>> 0553381... add like button, share
-=======
 //= require bootstrap
 //= require social-share-button
-//= require rails-ujs
-//= require jquery.raty
-//= require ratyrate
->>>>>>> 7acb049... add comment, edit comment, destroy comment
 //= require activestorage
 //= require turbolinks
 //= require clean-blog
