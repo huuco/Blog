@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 gem 'slim'
+gem 'ckeditor'
 gem 'simple_form'
 gem "bootstrap-sass", "3.3.7"
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -14,6 +15,7 @@ gem "jquery-rails"
 gem 'figaro'
 gem "carrierwave"
 gem "fog"
+gem "faker"
 gem 'kaminari'
 gem 'config'
 gem 'rails', '~> 5.2.2'

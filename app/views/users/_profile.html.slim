@@ -1,1 +1,12 @@
-_profile.html.slim
+.user-info-row
+  .user-avatar
+    = link_to image_tag(@user.avatar.url, class: "avatar-show"), @user
+  .user-name
+    div
+    = link_to @user.name, @user
+    div
+    = @user.email
+.user-info-row
+- if @user == current_user
+    = link_to t(".edit"), edit_user_registration_path(@user),
+     class: "btn btn-primary button_text profile"

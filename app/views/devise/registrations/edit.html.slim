@@ -63,6 +63,6 @@
             = f.submit t(".update"), class: "btn btn-small btn-success btn-update"
         h3
           = t ".delete_account"
-        = t ".unhappy?"
+        = t ".unhappy"
         = button_to t(".delete_account"), registration_path(resource_name), data: {confirm: t(".sure?")},
                  method: :delete, class: "btn btn-small btn-danger btn-update"

@@ -1,15 +1,18 @@
-= provide :title, t(".show")
 .intro-header.banner-home
   .container
     .row
       .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
         .site-heading
-.user-info-row
-  .user-avatar
-    = link_to image_tag(@user.avatar.url, class: "avatar-show"), @user
-  .user-name
-    = link_to @user.name
-.user-info-row
-  - if @user == current_user
-    = link_to t(".edit"), edit_user.path(@user), class: "btn btn-primary
-     button_text profile"
+          h1
+            = "Your secret"
+          hr.small
+          span.subheading
+            = "Quote"
+.row
+  .col-lg-7.col-lg-offset-3
+  - if @user.posts.any?
+    ul#my-posts.post-preview
+      = render @user.posts
+  .col-lg-3
+    = render "profile"
+

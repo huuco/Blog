@@ -1,1 +1,6 @@
-picture_default: "post.jpg"
+avatar_default: "avt_default.jpg"
+
+post:
+  picture_default: "post.jpg"
+  date: "%B %d, %Y"
+  maximum_title: 100

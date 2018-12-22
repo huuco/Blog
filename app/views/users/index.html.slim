@@ -1,3 +1,28 @@
-
-- @users.each do |user|
-  = user.name
+.intro-header.banner-home
+  .container
+    .row
+      .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+        .site-heading
+          h1 = t ".your_secret"
+          hr.small
+          span.subheading = t ".quote"
+.container
+  .row
+    .col-lg-12
+      .main-box-body.clearfix
+        .table-responsive
+          table#my-users.table.user-list
+            thread
+              tr#my-users
+                th
+                  = t(".user")
+                th
+                  = t(".email")
+                th
+                  = t(".phone")
+            tbody
+              - if @users.any?
+                div
+                = render @users
+#infinite-scrolling
+  = paginate @users
