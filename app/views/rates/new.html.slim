@@ -1,0 +1,17 @@
+.col-md-6.co-md-offset-2
+  = button_tag t(".add_one_review"),
+    data: {toggle: "modal", target: "#review_post"},
+     class: "btn btn-info btn-md"
+  #review_post.modal.fade[role="dialog"]
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button.close[type="button" data-dismiss="modal"]
+            | ×
+          h4.modal-title
+            = t ".rate", name: @post.title
+        .modal-body
+          = render "form"
+
+  .show_rates
+    = render partial: "rates/rate", collection: @rates, as: :rate

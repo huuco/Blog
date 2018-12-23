@@ -1,0 +1,9 @@
+#add-comment
+  = form_for [@post, resource_comment], remote: true do |f|
+    .input-group
+      = f.text_field :content, class: "form-control animated",
+               placeholder: t(".write_comment"), cols: "50", rows: "5",
+               id: "new-content-comment", autocomplete: :off
+      span.input-group-addon
+        = f.submit t(".comment"),
+                 id: "comment_submit", class: "btn-success"

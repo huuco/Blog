@@ -14,8 +14,13 @@
           <div class="star_content">
             <label><%= t ".quantity" %></label>
             <div class="form-group">
+<<<<<<< HEAD
               <%= f.hidden_field :star, value: Settings.rate.maximum_rate %>
               <% Settings.rate.maximum_rate.times do |i| %>
+=======
+              <%= f.hidden_field :star, value: 5 %>
+              <% 5.times do |i| %>
+>>>>>>> 7acb049... add comment, edit comment, destroy comment
                 <div class="star <%= "star_on" if i + 1 == 1 %>">
                   <i class="fa fa-star" value="<%= i + 1 %>"></i>
                 </div>

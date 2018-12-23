@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :posts
+  has_many :rates, dependent: :destroy
+  has_many :commnets, dependent: :destroy
   validates :name, presence: true
   mount_uploader :avatar, AvatarUploader
   scope :sort_by_name, -> {select(:id, :name, :email, :phone, :avatar).order(name: :asc)}

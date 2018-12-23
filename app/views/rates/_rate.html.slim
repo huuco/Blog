@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .rate_user
   .rate_star
     - 5.times do |i|
@@ -8,3 +9,11 @@
     |
     |
     =rate.content
+=======
+|<div class="review-rating" data-score="
+= rate.star
+| ">
+p.review-comment
+  = rate.content
+= link_to t(".edit"),edit_post_rate_path(rate.post, rate)
+>>>>>>> 7acb049... add comment, edit comment, destroy comment

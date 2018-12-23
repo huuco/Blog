@@ -4,3 +4,6 @@ post:
   picture_default: "post.jpg"
   date: "%B %d, %Y"
   maximum_title: 100
+rate:
+  minimum_rate: 1
+  maximum_rate: 5

@@ -1,13 +1,24 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
-@import 'variable';
 @import 'clean-blog';
+@import 'variable';
 @import 'social-share-button';
+
+@mixin background-tile {
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px 6px #ccc;
+  padding: 1.5em 1.25em;
+}
+
+
 
 body {
   a:link {
     text-decoration: none;
   }
+
 }
 
 .avatar-post {
@@ -215,7 +226,7 @@ h1 {
 
 .user-info-row {
   margin-bottom: 10px;
-  overflow: hidden
+  overflow: hidden;
 }
 
 .user-name {
@@ -318,7 +329,10 @@ h2.title-edit {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 7acb049... add comment, edit comment, destroy comment
 .rate_user {
   border-top: 1px solid #ccc;
   margin-top: 15px;
@@ -328,6 +342,7 @@ h2.title-edit {
   margin-top: 100px;
   border-radius: 4px;
 }
+<<<<<<< HEAD
 
 .star {
   cursor: pointer;
@@ -343,3 +358,49 @@ h2.title-edit {
   margin-top: 15px;
 }
 >>>>>>> 0553381... add like button, share
+=======
+.reviews {
+  @include background-tile;
+  margin-top: 40px;
+
+  h1 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 2em;
+  }
+
+  .review {
+    border-bottom: 1px solid gainsboro;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+
+    .review-comment {
+      font-size: 1.05em;
+      line-height: 1.5;
+    }
+
+  }
+
+  .new-review {
+    padding-top: 8px;
+  }
+
+}
+.new-review-form, .edit-review-form {
+  @include background-tile;
+
+  h1 {
+    margin-top: 0;
+  }
+
+  #rating-form {
+    margin-bottom: 15px;
+
+    label {
+      display: block;
+    }
+
+  }
+
+}
+>>>>>>> 7acb049... add comment, edit comment, destroy comment

@@ -11,17 +11,20 @@ div[div="box-post"]
       span.badge.badge-info
         - post.categories.each do |category|
           = link_to category.name, category
-          | ,
+  h3
+    = post.content
+  div
+  = social_share_button_tag(post.title, url: post_url(post), desc: post.content)
   .image-post
-    = image_tag post.picture.url if post.picture?
+    = link_to image_tag post.picture.url if post.picture?
   p.post-meta
     = post.updated_at.strftime(Settings.post.date)
   span.glyphicon.glyphicon-comment
-  - "post-comments-size"
+  = post.comments.size
+  - if post.user == current_user
   span
-    - if post.user == current_user
-      = link_to edit_post_path(post) do
-        span.glyphicon.glyphicon-pencil
-      = link_to post, method: :delete, remote: true,data: {confirm: t(".sure")} do
-        span.glyphicon.glyphicon-remove
+    = link_to edit_post_path(post) do
+      span.glyphicon.glyphicon-pencil
+    = link_to post, method: :delete, remote: true,data: {confirm: t(".sure")} do
+      span.glyphicon.glyphicon-remove
   hr
