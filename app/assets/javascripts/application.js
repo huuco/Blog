@@ -12,7 +12,10 @@
 //
 //= require jquery
 //= require rails-ujs
+<<<<<<< HEAD
 //= require bootstrap
+=======
+>>>>>>> 0553381... add like button, share
 //= require activestorage
 //= require turbolinks
 //= require clean-blog

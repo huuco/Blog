@@ -1,0 +1,3 @@
+/ = form_for [post, comment], remote: true do |f|
+/   = f.text_field :content
+/   = f.button t(".update"), type: :submit, class: "btn btn-default update-comment"

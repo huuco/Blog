@@ -1,0 +1,13 @@
+<div class="rate_user">
+  <div class="rate_star">
+    <% 5.times do |i| %>
+      <div class="star <%= "star_on" if i < rate.star %>">
+
+      </div>
+    <% end %>
+  </div>
+  <div class="rate_content">
+    <%= rate.user_name %>|
+    <%= rate.content %>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+| <div class="input-group comment-user", id="comment-
+= comment.id
+| ">
+span
+  = link_to image_tag(comment.user.avatar.url, class: "comment-avatar"),
+         comment.user
+.word-break
+  p.comment-name
+    = link_to comment.user.name, comment.user
+  p.comment-title
+    = comment.content
+span.sub-text
+  = time_ago_in_words comment.created_at
+  - if current_user
+  |  <div class="edit_comment_
+  = comment.id
+  | ">
+  = link_to  "edit", edit_post_comment_path(@post, comment), remote: true
+  = link_to t(".delete"), [comment.post, comment],
+             method: :delete, remote: true, data: {confirm: t(".sure")}

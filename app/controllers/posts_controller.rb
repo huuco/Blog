@@ -33,7 +33,11 @@ class PostsController < ApplicationController
   end
 
   def show
+<<<<<<< HEAD
 
+=======
+    @rates = @post.rates
+>>>>>>> 0553381... add like button, share
   end
   def destroy
     if @post.destroy
