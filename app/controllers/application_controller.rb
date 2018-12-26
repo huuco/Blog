@@ -10,4 +10,8 @@ class ApplicationController < ActionController::Base
       keys: %i(name birthday phone avatar avatar_cache)
   end
 
+  def load_info resource
+    return if resource
+    render file: "public/404.html", status: :not_found, layout: false
+  end
 end

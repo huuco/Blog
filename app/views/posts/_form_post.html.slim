@@ -1,0 +1,12 @@
+= form_for @post do |f|
+  = render "shared/error_messages", object: f.object
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: "form-control"
+    = f.label :list_categories,  t(".category")
+    = f.text_field :list_categories, class: "form-control"
+    = f.label :content
+    = f.text_area :content, class: "form-control"
+    = f.label :picture
+    = f.file_field :picture, accept: "image/jpeg,image/gif,image/png"
+    = f.submit @post.new_record? ? t(".create") : t(".update"), class: "btn btn-primary btn-create"
