@@ -7,9 +7,6 @@ header.intro-header.banner-posts
             = @post.title
           p
             = @post.content
-            |<p class="review-rating" data-score="
-            = @average_rate.star
-            | ">
           span.meta
             = @post.updated_at.strftime(Settings.post.date)
           - if @post.categories.any?
@@ -38,8 +35,6 @@ article
         div
           = social_share_button_tag(@post.title, url: post_url(@post), desc: @post.content)
           = render "posts/like_button"
-        div
-          = link_to "add",  new_post_rate_path(@post), class: "btn btn-primary button_text profile"
         h2
           = t ".comment"
         .form-comment
@@ -58,5 +53,5 @@ article
         .user-info-row
           - if current_user == @post.user
             = link_to t(".edit_profile"), edit_user_registration_path(@post.user),
-                           class: "btn btn-primary button_text profile"
-      = render "posts/review"
+            remote: true, class: "btn btn-primary button_text profile"
+      = render "posts/review_form"

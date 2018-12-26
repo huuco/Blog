@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   root "static_pages#home"
   get "/contact", to: "static_pages#contact"
   resources :posts
-<<<<<<< HEAD
   resources :categories
   resources :users
   resources :categories
@@ -11,7 +10,4 @@ Rails.application.routes.draw do
     resources :comments
     resources :rates
   end
-=======
-  resources :users
->>>>>>> c312721... signup-login-edit-user
 end

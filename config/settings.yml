@@ -7,3 +7,4 @@ post:
 rate:
   minimum_rate: 1
   maximum_rate: 5
+  maximum_content: 50

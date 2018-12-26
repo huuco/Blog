@@ -1,1 +1,1 @@
-$('#<%= @comment.id %>').remove();
+$('#comment-<%= @comment.id %>').remove();

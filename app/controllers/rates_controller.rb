@@ -9,6 +9,7 @@ class RatesController < ApplicationController
 
  def create
     @rate = current_user.rates.build rate_params
+    @rate.post_id = params[:post_id]
     if @rate.save
       flash[:success] = t "flash.save_success"
       redirect_to @post

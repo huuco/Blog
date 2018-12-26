@@ -1,2 +1,3 @@
-$("#add-comment").remove();
-$(".edit_comment-<%= @comment.id %>").html("<%= j render 'comments/edit_form_comment', post: @post, comment: @comment %>");
+<% if @comment.errors.blank? %>
+$(".edit-comment-<%= @comment.id %>").replaceWith("<%= j render 'comments/comment', comment: @comment %>");
+<% end %>

@@ -24,7 +24,6 @@ en:
   users:
     edit:
       update: "Update"
-<<<<<<< HEAD
     profile:
       edit: "Edit"
     index:
@@ -80,5 +79,3 @@ en:
     form_comment:
       comment: "Comment"
       write_comment: "Write comment"
-=======
->>>>>>> c312721... signup-login-edit-user
