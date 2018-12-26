@@ -14,6 +14,14 @@ gem 'devise'
 gem "jquery-rails"
 gem 'figaro'
 gem "carrierwave"
+gem "ckeditor"
+gem "coffee-rails", "~> 4.2"
+gem "config"
+gem "devise"
+gem "social-share-button"
+gem "faker"
+gem "figaro"
+gem "ckeditor"
 gem "fog"
 gem "faker"
 gem 'kaminari'

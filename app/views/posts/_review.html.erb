@@ -1,0 +1,39 @@
+<%= button_tag t(".add_one_review"),
+  data: {toggle: "modal", target: "#review_post"},
+  class: "btn btn-info btn-lg" %>
+<div class="modal fade" id="review_post" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><%= t ".rate", name: @post.title %></h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for :rate,  url: post_rates_path(@post),remote: true, method: :post do |f| %>
+          <div class="rate_error"></div>
+          <div class="star_content">
+            <label><%= t ".quantity" %></label>
+            <div class="form-group">
+              <%= f.hidden_field :star, value: Settings.rate.maximum_rate %>
+              <% Settings.rate.maximum_rate.times do |i| %>
+                <div class="star <%= "star_on" if i + 1 == 1 %>">
+                  <i class="fa fa-star" value="<%= i + 1 %>"></i>
+                </div>
+               <% end %>
+            </div>
+            <div class="form-group">
+              <label class="form-control-label"><%= t ".comment" %></label>
+              <%= f.cktext_area :content, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.button t(".submit"), type: :submit, class: "btn btn-default" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="show_rates">
+  <%= render partial: "rates/rate", collection: @rates, as: :rate %>
+</div>
