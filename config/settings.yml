@@ -1,6 +1,5 @@
-<<<<<<< HEAD
 avatar_default: "avt_default.jpg"
-
+picture_default: "post.jpg"
 post:
   picture_default: "post.jpg"
   date: "%B %d, %Y"
@@ -8,6 +7,4 @@ post:
 rate:
   minimum_rate: 1
   maximum_rate: 5
-=======
-picture_default: "post.jpg"
->>>>>>> c312721... signup-login-edit-user
+  maximum_content: 50

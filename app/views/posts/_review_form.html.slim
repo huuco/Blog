@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 = button_tag t(".add_one_review"),data: {toggle: "modal", target: "#review_post"},class: "btn btn-info btn-lg"
-=======
->>>>>>> 7acb049... add comment, edit comment, destroy comment
 #review_post.modal.fade[role="dialog"]
   .modal-dialog
     .modal-content
@@ -17,9 +14,7 @@
             label
               = t ".quantity"
             .form-group
-<<<<<<< HEAD
-<<<<<<< HEAD
-              f.hidden_field :star, value: Settings.rate.maximum_rate
+              =f.hidden_field :star, value: Settings.rate.maximum_rate
               - Settings.rate.maximum_rate.times do |i|
                 div class=("star #{"star_on" if i + 1 == 1}")
                   i.fa.fa-star value=("#{i + 1}")
@@ -29,33 +24,5 @@
               = f.cktext_area :content, class: "form-control"
             .form-group
               = f.button t(".submit"), type: :submit, class: "btn btn-default"
-=======
-              = f.hidden_field :star, value: 5
-              - 5.times do |i|
-                |  <div class="star
-                = "star_on" if i + 1 == 1
-                | "> <i class="fa fa-star" value="
-=======
-              = f.hidden_field :star, value: Settings.rate.maximum_rate
-              - Settings.rate.maximum_rate.times do |i|
-                |<div class="star
-                =" star_on" if i + 1 == 1
-                |"><i class="fa fa-star" value="
->>>>>>> 7acb049... add comment, edit comment, destroy comment
-                = i + 1
-                | ">
-          .form-group
-            label.form-control-label
-              = t ".comment"
-<<<<<<< HEAD
-              = f.cktext_area :content, class: "form-control"
-          .form-group
-          = f.button t(".submit"), type: :submit, class: "btn btn-default"
->>>>>>> 0553381... add like button, share
-=======
-            = f.cktext_area :content, class: "form-control"
-          .form-group
-            = f.button t(".submit"), type: :submit, class: "btn btn-default"
->>>>>>> 7acb049... add comment, edit comment, destroy comment
-.show_rates
+.show_rates.col-md-6.col-md-offset-3
   = render partial: "rates/rate", collection: @rates, as: :rate

@@ -15,11 +15,7 @@ module ApplicationHelper
     @devise_mapping ||= Devise.mappings[:user]
   end
 
-<<<<<<< HEAD
   def resource_comment
     @resource_comment ||= Comment.new
   end
-=======
-
->>>>>>> c312721... signup-login-edit-user
 end
