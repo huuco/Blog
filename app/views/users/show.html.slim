@@ -1,0 +1,15 @@
+= provide :title, t(".show")
+.intro-header.banner-home
+  .container
+    .row
+      .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+        .site-heading
+.user-info-row
+  .user-avatar
+    = link_to image_tag(@user.avatar.url, class: "avatar-show"), @user
+  .user-name
+    = link_to @user.name
+.user-info-row
+  - if @user == current_user
+    = link_to t(".edit"), edit_user.path(@user), class: "btn btn-primary
+     button_text profile"

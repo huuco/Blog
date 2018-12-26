@@ -1,0 +1,20 @@
+= provide :title, t(".edit")
+.intro-header.banner-home
+  .container
+    .row
+      .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+        .site-heading
+center
+  h2.title-edit
+    = "Edit profile"
+.row
+  .col-md-6.col-md-offset-3
+   = simple_form_for @user do |f|
+    = f.input :name, input_html: {class: 'input-name'}
+    = f.input :phone, input_html: {class: 'input-name'}
+    = f.input :email, input_html: {class: 'input-name'}
+    = f.input :password, input_html: {class: 'input-name'}
+    = f.input :password_confirmation, input_html: {class: 'input-name'}
+    = f.file_field :avatar, accept: "image/jpeg,image/gif,image/png"
+    = f.button :submit, t(".update"), class: "btn btn-primary btn-update"
+

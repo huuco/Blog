@@ -45,7 +45,7 @@ body {
 }
 
 .banner-contact {
-  background-image: image-url('/assets/contact.jpg');
+  background-image: image-url('/assets/back.jpg');
 }
 
 .banner-posts {
@@ -287,4 +287,24 @@ h1 {
 
 .profile {
   width: 90px;
+}
+.input-name {
+  width: 100%;
+  height: 30px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.btn-update{
+  border-radius: 5px;
+  height: 50%;
+
+}
+h2.title-edit {
+  font-size: 60px;
+  font-family: sans-serif;
+  font-style: oblique;
 }

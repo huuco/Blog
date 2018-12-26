@@ -1,0 +1,31 @@
+#signup.modal.fade[tabindex="-1" role="dialog" aria-labelledby="myModalLabel"]
+  .modal-dialog[role="document"]
+    .modal-content
+      .modal-header
+        button.close[type="button" data-dismiss="modal"]
+          |  ×
+        h4#myModalLabel.modal-title
+          = t ".signup"
+      .modal-body
+        = form_for(resource, :as => resource_name,:url => registration_path(resource_name)) do |f|
+          = devise_error_messages!
+          .form-group
+            = f.label :name
+            br
+            = f.text_field :name, class: "form-control"
+          .form-group
+            = f.label :email
+            br
+            = f.email_field :email, :autofocus => true, class: "form-control"
+          .form-group
+            = f.label :password
+            br
+            = f.password_field :password, class: "form-control"
+          .form-group
+            = f.label :password_confirmation
+            br
+            = f.password_field :password_confirmation, class: "form-control"
+          .modal-footer
+            div
+              = f.submit t(".signup"), class: "btn btn-small btn-success"
+        = render "devise/shared/links"
