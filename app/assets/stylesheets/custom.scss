@@ -1,13 +1,24 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
-@import 'variable';
 @import 'clean-blog';
+@import 'variable';
 @import 'social-share-button';
+
+@mixin background-tile {
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px 6px #ccc;
+  padding: 1.5em 1.25em;
+}
+
+
 
 body {
   a:link {
     text-decoration: none;
   }
+
 }
 
 .avatar-post {
@@ -215,7 +226,7 @@ h1 {
 
 .user-info-row {
   margin-bottom: 10px;
-  overflow: hidden
+  overflow: hidden;
 }
 
 .user-name {
@@ -317,3 +328,90 @@ h2.title-edit {
   height: 50px;
 }
 
+.rate_user {
+  border-top: 1px solid #ccc;
+  margin-top: 15px;
+}
+.btn.btn-info.btn-md {
+  margin-left: 200px;
+  margin-top: 100px;
+  border-radius: 4px;
+}
+.star {
+  cursor: pointer;
+  display: inline-block;
+}
+
+.star_on {
+  color: yellow;
+}
+
+.rate_user {
+  border-top: 1px solid #ccc;
+  margin-top: 15px;
+}
+
+.reviews {
+  @include background-tile;
+  margin-top: 40px;
+
+  h1 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 2em;
+  }
+
+  .review {
+    border-bottom: 1px solid gainsboro;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+
+    .review-comment {
+      font-size: 1.05em;
+      line-height: 1.5;
+    }
+
+  }
+
+  .new-review {
+    padding-top: 8px;
+  }
+
+}
+.new-review-form, .edit-review-form {
+  @include background-tile;
+
+  h1 {
+    margin-top: 0;
+  }
+
+  #rating-form {
+    margin-bottom: 15px;
+
+    label {
+      display: block;
+    }
+
+  }
+
+}
+.input-name {
+  width: 100%;
+  height: 30px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.btn-update{
+  border-radius: 5px;
+  height: 50%;
+
+}
+h2.title-edit {
+  font-size: 60px;
+  font-family: sans-serif;
+  font-style: oblique;
+}

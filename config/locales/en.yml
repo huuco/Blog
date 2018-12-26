@@ -24,6 +24,7 @@ en:
   users:
     edit:
       update: "Update"
+<<<<<<< HEAD
     profile:
       edit: "Edit"
     index:
@@ -57,7 +58,27 @@ en:
       delete: "Delete"
       comment: "Comment"
       edit_profile: "Edit profie"
+    review_form:
+      add_one_review: "Add one review"
+      rate: "rate: %{name}"
+      quantity: "Quantity"
+      "1": "1"
+      "2": "2"
+      "3": "3"
+      "4": "4"
+      "5": "5"
+      submit: "Submit"
   shared:
     error_messages:
       the_form: "The form"
       error: "error"
+  comments:
+    comment:
+      edit: "Edit"
+      delete: "Delete"
+      sure: "You are sure"
+    form_comment:
+      comment: "Comment"
+      write_comment: "Write comment"
+=======
+>>>>>>> c312721... signup-login-edit-user
