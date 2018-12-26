@@ -3,36 +3,28 @@ class CommentsController < ApplicationController
   before_action :load_comment, only: %i(edit update destroy)
   before_action :authenticate_user!
 
+
   def create
     @comment = @post.comments.build comment_params
     @comment.user = current_user
     if @comment.save
-      respond_to do |format|
-        format.js
-      end
+      respond_to {|format| format.js}
     end
   end
 
   def edit
-    respond_to do |format|
-      format.js
-    end
+    respond_to {|format| format.js}
   end
 
   def update
-    @comment.update_attributes comment_params
-    if @comment.save
-      respond_to do |format|
-        format.js
-      end
+    if @comment.update_attributes comment_params
+      respond_to {|format| format.js}
     end
   end
 
   def destroy
-    if @comment.destroy
-      respond_to do |format|
-        format.js
-      end
+    if  @comment.present? && @comment.destroy
+      respond_to {|format| format.js}
     end
   end
 
