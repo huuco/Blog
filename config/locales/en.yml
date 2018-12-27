@@ -79,3 +79,7 @@ en:
     form_comment:
       comment: "Comment"
       write_comment: "Write comment"
+  admin:
+    posts:
+      show:
+        save: "Save"

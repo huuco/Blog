@@ -1,0 +1,25 @@
+intro-header
+  .container
+    .row
+      .site-heading
+center
+  h1
+    = t ".list_post"
+.col-md-10.col-md-offset-1
+  table.table.table-hover
+    thread
+      tr
+        th.text-center[scope="col"]
+          | #
+        th.text-center[scope="col"]
+          = t ".title"
+        th.text-center[scope="col"]
+          = t "category"
+        th.text-center[scope="col"]
+          = t ".status"
+        th.text-center[scope="col"]
+          = t ".view"
+        th.text-center[scope="col"]
+          = t ".delete"
+    .tbody.table-book
+      = render partial: "post", collection: @posts, as: :post

@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2018_12_24_135633) do
     t.text "content"
     t.string "picture"
     t.integer "user_id"
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -4,15 +4,19 @@ header.intro-header.banner-posts
       .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
         .site-heading
           h1
-            = t ".your_life"
+            = t ".list_post"
           - if user_signed_in?
             = link_to t(".create_post"), new_post_path, class: "create-post btn btn-sm btn-primary"
           span.subheading
             = t ".quote"
 .container
   .row
-    .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+    .col-lg-9.col-md-9
       - if @posts.any?
           ul#my-posts.post-preview
-            = render @posts
+            = render partial: "post", collection: @posts, as: :post
+    .col-lg-3.col-md-3.host-post
+      h1
+        = "List hostest"
+      = render partial: "post_hostest_week", collection: @list_post_hostest, as: :post
 #infinite-scrolling

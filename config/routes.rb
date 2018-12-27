@@ -11,4 +11,9 @@ Rails.application.routes.draw do
     resources :comments
     resources :rates
   end
+
+  namespace :admin do
+    root "posts#index"
+    resources :posts
+  end
 end

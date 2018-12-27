@@ -6,7 +6,7 @@
     = f.label :list_categories,  t(".category")
     = f.text_field :list_categories, class: "form-control"
     = f.label :content
-    = f.text_area :content, class: "form-control"
+    = f.text_area :content, class: "form-control", rows: 7, cols: 50
     = f.label :picture
     = f.file_field :picture, accept: "image/jpeg,image/gif,image/png"
     = f.submit @post.new_record? ? t(".create") : t(".update"), class: "btn btn-primary btn-create"
