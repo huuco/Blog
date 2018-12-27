@@ -3,7 +3,10 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: %i(index show)
 
   def index
-    @posts = Post.sort_by_updated
+    @search = Post.search params[:q]
+    @search.sorts = Settings.default_sort if @search.sorts.empty?
+    @posts = @search.result.includes(:categories, :post_categories)
+
   end
 
   def new
