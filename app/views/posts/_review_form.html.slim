@@ -1,0 +1,28 @@
+= button_tag t(".add_one_review"),data: {toggle: "modal", target: "#review_post"},class: "btn btn-info btn-md"
+#review_post.modal.fade[role="dialog"]
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close[type="button" data-dismiss="modal"]
+          | ×
+        h4.modal-title
+          = t ".rate", name: @post.title
+      .modal-body
+        = form_for :rate,  url: post_rates_path(@post),remote: true, method: :post do |f|
+          .rate_error
+          .star_content
+            label
+              = t ".quantity"
+            .form-group
+              =f.hidden_field :star, value: Settings.rate.maximum_rate
+              - Settings.rate.maximum_rate.times do |i|
+                div class=("star #{"star_on" if i + 1 == 1}")
+                  i.fa.fa-star value=("#{i + 1}")
+            .form-group
+              label.form-control-label
+                = t ".comment"
+              = f.cktext_area :content, class: "form-control"
+            .form-group
+              = f.button t(".submit"), type: :submit, class: "btn btn-default"
+.show_rates.col-md-6.col-md-offset-3
+  = render partial: "rates/rate", collection: @rates, as: :rate

@@ -1,0 +1,68 @@
+.yield
+  h1
+    = t ".edit_profile"
+  .row
+    .col-md-8.col-md-offset-2
+      .col-md-2
+        = image_tag current_user.avatar.url, class: "avatar"
+      .col-md-10
+        = form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put}) do |f|
+          = devise_error_messages!
+          .form-group
+            = f.label :name, t(".name")
+            br
+            = f.text_field :name, class: "form-control"
+          .form-group
+            = f.label :email, t(".email")
+            br
+            = f.email_field :email, autofocus: true, class: "form-control"
+          .form-group
+            = f.label :birthday, t(".birthday")
+            br
+            = f.date_field :birthday, class: "form-control"
+          .form-group
+            = f.label :phone, t(".phone")
+            br
+            = f.telephone_field :phone, class: "form-control"
+          .form-group
+            = f.label :change_avatar, t(".change_avatar")
+            br
+            = f.file_field :avatar, class: "form-control",
+                       accept: "image/jpeg,image/gif,image/png"
+            = f.hidden_field :avatar_cache
+          - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+            div
+              |  Currently waiting confirmation for:
+              = resource.unconfirmed_email
+          .form-group
+            = f.label :password, t(".password")
+            i
+              | (
+              = t ".leave_blank"
+              | )
+            br
+            em
+              = @minimum_password_length
+              = t ".characters"
+            = f.password_field :password, autocomplete: "off", class: "form-control"
+          .form-group
+            = f.label :password_confirmation, t(".password_confirmation")
+            br
+            = f.password_field :password_confirmation,
+                       autocomplete: "off", class: "form-control"
+          .form-group
+            = f.label :current_password, t(".current_password")
+            i
+              | (
+              = t ".need_current_password"
+              | )
+            br
+            = f.password_field :current_password,
+                       autocomplete: "off", class: "form-control"
+          .actions
+            = f.submit t(".update"), class: "btn btn-small btn-success btn-update"
+        h3
+          = t ".delete_account"
+        = t ".unhappy"
+        = button_to t(".delete_account"), registration_path(resource_name), data: {confirm: t(".sure?")},
+                 method: :delete, class: "btn btn-small btn-danger btn-update"

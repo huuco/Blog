@@ -5,11 +5,12 @@
         .site-heading
           h1
             = t ".your_secret"
-
+          - if user_signed_in?
             = link_to t(".create_post"), new_post_path,
-                           class: "create-post btn btn-sm btn-primary"
+             class: "create-post btn btn-sm btn-primary"
           span.subheading
             = t ".quote"
+- if user_signed_in?
   .container
     .row
       .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
