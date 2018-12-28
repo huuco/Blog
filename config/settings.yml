@@ -1,0 +1,11 @@
+avatar_default: "avt_default.jpg"
+picture_default: "post.jpg"
+default_sort: "created_at asc"
+post:
+  picture_default: "post.jpg"
+  date: "%B %d, %Y"
+  maximum_title: 100
+rate:
+  minimum_rate: 1
+  maximum_rate: 5
+  maximum_content: 50

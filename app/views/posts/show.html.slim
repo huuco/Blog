@@ -1,0 +1,57 @@
+header.intro-header.banner-posts
+  .container
+    .row
+      .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+        .post-heading.word-break
+          h2
+            = @post.title
+          p
+            = @post.content
+          span.meta
+            = @post.updated_at.strftime(Settings.post.date)
+          - if @post.categories.any?
+            span
+              i.fa.fa-tags
+              = t ".category"
+              | :
+              span.badge.badge-info
+                - @post.categories.each do |category|
+                  = link_to category.name, category
+                  | ,
+article
+  .container
+    .row
+      .col-lg-8.col-lg-offset-1.col-md-10.col-md-offset-1
+        h2.section-heading
+        span.word-break
+          = raw @post.content
+        span
+          - if @post.user == current_user
+            = link_to t(".edit_post"), edit_post_path(@post),
+                           class: "btn btn-primary button_text profile"
+            = link_to t(".delete"), @post, method: :delete,
+                           data: {confirm: t(".sure")}, class: "btn btn-danger button_text profile"
+        hr
+        div
+          = social_share_button_tag(@post.title, url: post_url(@post), desc: @post.content)
+          = render "posts/like_button"
+        h2
+          = t ".comment"
+        .form-comment
+          = render "comments/form_comment"
+        #comment_list.comment-list
+          = render partial: "comments/comment", collection: @post.comments
+      div
+        .user-info-row
+          .user-avatar
+            = link_to image_tag(@post.user.avatar.url, class: "avatar-show"), @post.user
+          .user-name
+            div
+              = link_to @post.user.name, @post.user
+            div
+              = @post.user.email
+        .user-info-row
+          - if current_user == @post.user
+            = link_to t(".edit_profile"), edit_user_registration_path(@post.user),
+            remote: true, class: "btn btn-primary button_text profile"
+      = render "posts/review_form"

@@ -1,0 +1,26 @@
+#login.modal.fade[tabindex="-1" role="dialog" aria-labelledby="myModalLabel"]
+  .modal-dialog[role="document"]
+    .modal-content
+      .modal-header
+        button.close[type="button" data-dismiss="modal" aria-label="Close"]
+          span[aria-hidden="true"]
+            | ×
+        h4#myModalLabel.modal-title
+          = t ".login"
+      .modal-body
+        = form_for(resource, as: resource_name,url: session_path(resource_name)) do |f|
+          .form-group
+            = f.label :email
+            br
+            = f.email_field :email, autofocus: true, class: "form-control"
+          .form-group
+            = f.label :password
+            br
+            = f.password_field :password, autocomplete: "off", class: "form-control"
+          - if devise_mapping.rememberable?
+            .form-group
+              = f.check_box :remember_me
+              = f.label :remember_me, class: "form-control"
+          .actions
+            = f.submit t(".log_in"), class: "btn btn-sm btn-success"
+        = render "devise/shared/links"

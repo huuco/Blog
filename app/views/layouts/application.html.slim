@@ -9,5 +9,7 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
     = render "layouts/header"
+    = render "devise/registrations/new"
+    = render "devise/sessions/new"
     = yield
     = render "layouts/footer"

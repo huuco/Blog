@@ -1,34 +1,3 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
   hello: "Hello world"
   static_pages:
@@ -52,3 +21,61 @@ en:
       search: "Search . . ."
     footer:
       author: "Author"
+  users:
+    edit:
+      update: "Update"
+    profile:
+      edit: "Edit"
+    index:
+      your_secret: "Your secret"
+      quote: "Quote"
+      user: "User"
+      email: "E-mail"
+      phone: "Phone"
+  posts:
+    new:
+      create_post: "Create post"
+      post: "Post"
+    form_post:
+      title: "Title"
+      category: "Category"
+      picture: "Picture"
+      create: "Create post"
+      update: "Update post"
+    edit:
+      save: "Change save"
+      update_post: "Update post"
+    post:
+      sure: "You sure delete"
+    index:
+      create_post: "Create post"
+      quote: "Quote"
+      your_secret: "Your secret"
+    show:
+      category: "Category"
+      edit_post: "Edit post"
+      delete: "Delete"
+      comment: "Comment"
+      edit_profile: "Edit profie"
+    review_form:
+      add_one_review: "Add one review"
+      rate: "rate: %{name}"
+      quantity: "Quantity"
+      "1": "1"
+      "2": "2"
+      "3": "3"
+      "4": "4"
+      "5": "5"
+      submit: "Submit"
+  shared:
+    error_messages:
+      the_form: "The form"
+      error: "error"
+  comments:
+    comment:
+      edit: "Edit"
+      delete: "Delete"
+      sure: "You are sure"
+    form_comment:
+      comment: "Comment"
+      write_comment: "Write comment"
