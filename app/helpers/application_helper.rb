@@ -18,4 +18,12 @@ module ApplicationHelper
   def resource_comment
     @resource_comment ||= Comment.new
   end
+
+  def index_for_list object, counter
+    ((object.current_page - 1)  * object.limit_value) + counter + 1
+  end
+
+  def liked? post_id
+    current_user.likes.find_by(post_id: post_id).present?
+  end
 end

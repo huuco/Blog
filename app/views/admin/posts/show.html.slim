@@ -1,0 +1,30 @@
+header.intro-header.banner-posts
+  .container
+    .row
+      .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+        .post-heading.word-break
+.row
+  .col-md-1
+  .col-md-6
+    h2
+      = @post.title
+    p
+    = simple_format(truncate(@post.content, length: 70))
+    br
+    span.meta
+      = @post.updated_at.strftime(Settings.post.date)
+      - if @post.categories.any?
+    span
+      i.fa.fa-tags
+      br
+      = t ".category"
+      | :
+    span.badge.badge-info
+      - @post.categories.each do |category|
+        = link_to category.name, category
+        | ,
+  .col-md-2.col-md-offset-1
+    = form_for [:admin, @post] do |f|
+      = f.label :status
+      = f.select :status, Post.statuses.keys, {}, class: "form-control"
+      = f.submit t(".save"), class: "btn btn-primary btn-status"

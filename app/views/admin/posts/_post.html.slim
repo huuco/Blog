@@ -1,0 +1,15 @@
+tr
+  td.text-center
+    = index_for_list @posts, post_counter
+  td.text-center
+    = post.title
+  td.text-center
+   - post.post_categories.each do |cate|
+    - category = Category.find_by id: cate.category_id
+    = category.name
+  td.text-center
+    = post.status
+  td.text-center
+    = link_to t(".view"), admin_post_path(post)
+  td.text-center
+    = link_to t(".delete"), admin_post_path(post), method: :delete, data: {confirm: t(".sure")}

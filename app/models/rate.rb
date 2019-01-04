@@ -9,4 +9,5 @@ class Rate < ApplicationRecord
   validates :content, presence: true,
    length: {maximum: Settings.rate.maximum_content}
   delegate :name, to: :user, prefix: true, allow_nil: true
+
 end

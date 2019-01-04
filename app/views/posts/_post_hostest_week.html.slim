@@ -1,0 +1,12 @@
+.row
+  .col-md-12.panel.panel-primary
+    - post.post_categories.each do |cate|
+      - category =  Category.find_by id: cate.category_id
+      h3.panel-heading.category-text
+        = link_to category.name.capitalize, category
+      h4.panel-body
+        = truncate post.title.capitalize, length: 20
+    span
+      = post.likes.size
+      = fa_icon("heart")
+    hr

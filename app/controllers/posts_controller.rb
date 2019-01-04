@@ -3,10 +3,14 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: %i(index show)
 
   def index
-    @search = Post.search params[:q]
+    @search = Post.ransack params[:q]
     @search.sorts = Settings.default_sort if @search.sorts.empty?
-    @posts = @search.result.includes(:categories, :post_categories)
-
+    @posts = @search.result.includes(:categories, :post_categories).page(params[:page]).per Settings.post.paginate_post
+    @post_hostest_week =  Post.show_post_host
+    @list_post_hostests = []
+    @post_hostest_week.each do |post|
+      @list_post_hostests.push Post.find_by id: post.id
+    end
   end
 
   def new

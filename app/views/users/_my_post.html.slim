@@ -1,0 +1,35 @@
+| <div id="post-
+= post.id
+| ">
+div[div="box-post"]
+  = link_to image_tag(post.user.avatar.url, class: "avatar-post"), post.user
+  h3.user-name
+    = link_to post.user.name, post.user
+  h2.post-title
+    = link_to post.title, post
+    br
+    - if post.categories.any?
+      span.badge.badge-info
+        - post.categories.each do |category|
+          = link_to category.name, category
+      span.badge.badfe-info
+        = post.status
+  div
+  = social_share_button_tag(post.title, url: "https://safe-retreat-68629.herokuapp.com", desc: post.content)
+  .image-post
+    = link_to image_tag post.picture.url if post.picture?
+  p.post-meta
+    = post.updated_at.strftime(Settings.post.date)
+  span.glyphicon.glyphicon-comment
+  = post.comments.size
+  - if post.user == current_user
+  span
+    = link_to edit_post_path(post) do
+      span.glyphicon.glyphicon-pencil
+    = link_to post, method: :delete, remote: true,data: {confirm: t(".sure")} do
+      span.glyphicon.glyphicon-remove
+    span.col-md-1 id="btn-like-#{post.id}"
+      - if user_signed_in? && liked?(post.id)
+        = render partial: "likes/unlike", locals: {post: post}
+      - else
+        = render partial: "likes/like", locals: {post: post}

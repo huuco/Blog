@@ -11,7 +11,7 @@ class RatesController < ApplicationController
     @rate = current_user.rates.build rate_params
     @rate.post_id = params[:post_id]
     if @rate.save
-      flash[:success] = t "flash.save_success"
+      flash[:success] = t ".save_success"
       redirect_to @post
     else
       respond_to {|format| format.js }
@@ -23,10 +23,9 @@ class RatesController < ApplicationController
  def update
   @rate.update_attributes rate_params
   if @rate.save
-    flash[:success] = t "flash.update_success"
+    flash[:success] = t ".update_success"
     redirect_to @post
   else
-    flash[:danger] = t "flash.update_failed"
     render :edit
   end
  end

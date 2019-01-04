@@ -2,9 +2,8 @@ default: &default
   adapter: postgresql
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
+  username: nhc
   password: 1
-  host: localhost
   port: 5432
 
 development:

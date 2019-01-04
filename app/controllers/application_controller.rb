@@ -1,6 +1,23 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_search
+
+  def is_admin?
+    user_signed_in? ? current_user.admin? : false
+  end
+
+  def after_sign_in_path_for resource
+    if resource.admin?
+      admin_root_path
+    else
+      root_path
+    end
+  end
+
+  def liked? post_id
+    current_user.likes.find_by(post_id: post_id).present?
+  end
+
   protected
 
   def configure_permitted_parameters
@@ -14,8 +31,8 @@ class ApplicationController < ActionController::Base
     return if resource
     render file: "public/404.html", status: :not_found, layout: false
   end
-  def set_search
-    @search = Post.search params[:q]
-  end
 
+  def set_search
+    @search = Post.ransack(params[:q])
+  end
 end
