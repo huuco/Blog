@@ -1,13 +1,14 @@
-.rate_user
+.rate_user.well
+  = image_tag rate.user.avatar.url if rate.user.avatar.present?
+  p.post-title
+    = rate.user.name
+  p.post-meta
+    = rate.updated_at.strftime(Settings.post.date)
+  blockquote
+    = rate.content
   .rate_star
     - 5.times do |i|
       div class=("star #{"star_on" if i < rate.star}")
         i.fa.fa-star
-  .rate_content
-    = rate.user_name
-    = ":"
-    |
-    |
-    br
-    span.user-content
-      =rate.content
+  - if rate.user == current_user
+    = link_to "edit", edit_post_rate_path(rate.post, rate), class: "text-primary edit-comment"

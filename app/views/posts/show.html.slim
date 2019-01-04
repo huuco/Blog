@@ -1,55 +1,82 @@
-header.intro-header.banner-posts
-  .container
-    .row
-      .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+.container
+  .row
+    .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+      .host-post
         .post-heading.word-break
           h2
             = @post.title.capitalize
-          p
-            = simple_format @post.content
+          = image_tag @post.user.avatar.url, class: "avatar-post"
           span.meta
             = @post.updated_at.strftime(Settings.post.date)
-          - if @post.categories.any?
+          - if @post.category.present?
             span
               i.fa.fa-tags
               = t ".category"
               | :
               span.badge.badge-info
-                - @post.categories.each do |category|
-                  = link_to category.name, category
-                  | ,
+                = link_to @post.category_name, @post.category
           br
+          .image-post
+            = image_tag(@post.picture.url, class: "img-thumbnail")
+          p
+            = simple_format @post.content
           span
           - if @post.user == current_user
             = link_to t(".edit_post"), edit_post_path(@post),
                            class: "btn btn-primary button_text profile"
             = link_to t(".delete"), @post, method: :delete,
                            data: {confirm: t(".sure")}, class: "btn btn-danger button_text profile"
+hr
 article
   .container
     .row
-      .col-lg-8.col-lg-offset-1.col-md-10.col-md-offset-1
-        h2.section-heading
-        hr
-        div
-          = social_share_button_tag(@post.title, url:"https://safe-retreat-68629.herokuapp.com", desc: @post.content)
-        h2
-          = t ".comment"
-        .form-comment
-          = render "comments/form_comment"
-        #comment_list.comment-list
-          = render partial: "comments/comment", collection: @post.comments
-      div
-        .user-info-row
-          .user-avatar
-            = link_to image_tag(@post.user.avatar.url, class: "avatar-show"), @post.user
-          .user-name
-            div
-              = link_to @post.user.name, @post.user
-            div
-              = @post.user.email
-        .user-info-row
-          - if current_user == @post.user
-            = link_to t(".edit_profile"), edit_user_registration_path(@post.user),
-             class: "btn btn-primary button_text profile"
-      = render "posts/review_form"
+      .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+        .host-post
+          - @average_rate = rating @post
+          | <div class="average-review-rating" data-score=
+          = @average_rate
+          | >
+          small.col-md-2 id="btn-like-#{@post.id}"
+            - if user_signed_in? && liked?(@post.id)
+              = render partial: "likes/unlike", locals: {post: @post}
+            - else
+              = render partial: "likes/like", locals: {post: @post}
+            = social_share_button_tag(@post.title, url:"https://safe-retreat-68629.herokuapp.com", desc: @post.content)
+          h2
+            = t ".comment"
+            = render "comments/form_comment", post: @post, parent_id: nil, comment: @comment
+            .comment-list id="comment-list-fuck" data-comment="#{@comments_ajax}"
+              / = comments_tree_for @supports.comments_tree.hash_tree, @post, @supports.comment
+          h2 id="test-fuck"
+          .group-tabs
+            ul.nav.nav-tabs role="tablist"
+              li.active role="presentation"
+                a aria-controls="review" data-toggle="tab" href="#review" role="tab"  Review
+              li role="presentation"
+                a aria-controls="description" data-toggle="tab" href="#description" role="tab"  Description
+            .tab-content
+              #review.tab-pane.active role="tabpanel"
+                - if user_signed_in?
+                  = render "review_form"
+                  = link_to "add review", "#review_post", data: {toggle: "modal", target: "#review_post"}, class: "btn btn-custom2"
+                .show_rates
+                  = render partial: "rates/rate", collection: @rates, as: :rate
+              #description.tab-pane role="tabpanel" Description
+          hr
+        .hot-post
+          .user-info-row
+            .user-avatar
+              = link_to image_tag(@post.user.avatar.url, class: "avatar-show"), @post.user
+            .user-name
+              div
+                = link_to @post.user.name, @post.user
+              div
+                = @post.user.email
+              div
+                = @post.user.likes.size
+                = " "
+                = fa_icon("heart-o")
+          .user-info-row
+            - if current_user == @post.user
+              = link_to t(".edit_profile"), edit_user_registration_path(@post.user),
+               class: "btn btn-primary button_text profile"

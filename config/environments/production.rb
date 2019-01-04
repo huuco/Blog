@@ -47,7 +47,7 @@ Rails.application.configure do
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  # config.force_ssl = true
+  config.force_ssl = true
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
@@ -82,13 +82,23 @@ Rails.application.configure do
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
-
+  config.assets.compile = true
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
-config.action_mailer.default_url_options = {host: ENV["SMTP_HOST"]}
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  config.action_mailer.default_url_options = {host: ENV["SMTP_HOST_HEROKU"]}
+  config.action_mailer.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    :address => ENV["SMTP_ADDRESS"],
+    :port => ENV["SMTP_PORT"],
+    :user_name => ENV["SMTP_EMAIL"],
+    :password => ENV["SMTP_PASSWORD"],
+    :domain => ENV["SMTP_DOMAIN"],
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
 end

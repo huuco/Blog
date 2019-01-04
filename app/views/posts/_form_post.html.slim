@@ -2,11 +2,27 @@
   = render "shared/error_messages", object: f.object
   .form-group
     = f.label :title
-    = f.text_field :title, class: "form-control"
-    = f.label :list_categories,  t(".category")
-    = f.text_field :list_categories, class: "form-control"
+    = f.text_field :title, placeholder: "Title", class: "form-control"
+    = f.label :category_id,  t(".category")
+    = f.select :category_id, Category.all.pluck(:name, :id), {}, { class: "selectize"}
     = f.label :content
-    = f.text_area :content, class: "form-control", rows: 7, cols: 50
+    = f.text_area :content,placeholder: "Content. . .", class: "form-control", rows: 7, cols: 50
     = f.label :picture
     = f.file_field :picture, accept: "image/jpeg,image/gif,image/png"
     = f.submit @post.new_record? ? t(".create") : t(".update"), class: "btn btn-primary btn-create"
+  .error_category
+.modal.fade.category-modal[tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"]
+  .modal-dialog.modal-sm[role="document"]
+    .modal-content
+      .modal-header
+        button.close[type="button" data-dismiss="modal" aria-label="Close"]
+          span[aria-hidden="true"]
+            | ×
+        h4#mySmallModalLabel.modal-title
+          | Add Category
+      .modal-body
+        = form_for Category.new , remote: true do  |f|
+          .form-group
+            = f.label :name
+            = f.text_field :name, class: "form-control category_name"
+            = f.submit class: "btn btn-primary"

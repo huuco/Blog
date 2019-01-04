@@ -1,12 +1,9 @@
-.row
-  .col-md-12.panel.panel-primary
-    - post.post_categories.each do |cate|
-      - category =  Category.find_by id: cate.category_id
-      h3.panel-heading.category-text
-        = link_to category.name.capitalize, category
-      h4.panel-body
-        = truncate post.title.capitalize, length: 20
-    span
-      = post.likes.size
-      = fa_icon("heart")
-    hr
+h3.card-title
+  = link_to post.title, post
+h4.post-meta
+  = simple_format(truncate(post.content, length: 100))
+  - @average_rate = rating post
+| <p class="average-review-rating" data-score=
+= @average_rate
+| >
+hr

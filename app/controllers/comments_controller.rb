@@ -5,10 +5,21 @@ class CommentsController < ApplicationController
 
 
   def create
-    @comment = @post.comments.build comment_params
-    @comment.user = current_user
+    if params[:comment][:parent_id].present?
+      parent = Comment.find_by id: params[:comment].delete(:parent_id)
+      @comment = parent.children.build(comment_params)
+      @comment.post = @post
+      @comment.user = current_user
+    else
+      @comment = @post.comments.build comment_params
+      @comment.user = current_user
+    end
+
     if @comment.save
-      respond_to {|format| format.js}
+      respond_to do |format|
+        format.html{redirect_back(fallback_location: root_path)}
+        format.js
+      end
     end
   end
 
@@ -23,8 +34,12 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    if  @comment.present? && @comment.destroy
-      respond_to {|format| format.js}
+    @comment.descendants.each do |comment_des|
+      comment_des.destroy
+    end
+    @comment.destroy
+    respond_to do |format|
+      format.html{redirect_back(fallback_location: root_path)}
     end
   end
 

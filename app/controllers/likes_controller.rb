@@ -1,6 +1,6 @@
 class LikesController < ApplicationController
   before_action :load_post
-  before_action :user_signed_in?
+  before_action :authenticate_user!
 
   def create
     unless liked? @post.id
@@ -11,7 +11,7 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    @like = Like.find_by id:params[:id]
+    @like = Like.find_by id: params[:id]
     respond_to {|format| format.js} if @like.destroy
   end
 

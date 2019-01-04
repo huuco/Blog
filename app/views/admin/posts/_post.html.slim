@@ -4,9 +4,7 @@ tr
   td.text-center
     = post.title
   td.text-center
-   - post.post_categories.each do |cate|
-    - category = Category.find_by id: cate.category_id
-    = category.name
+    = post.category_name
   td.text-center
     = post.status
   td.text-center

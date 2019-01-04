@@ -11,11 +11,19 @@
 // about supported directives.
 //
 //= require jquery
-//= require rails-ujs
-//= require bootstrap
+//= require jquery_ujs
 //= require social-share-button
+//= require bootstrap
+//= require selectize
 //= require activestorage
 //= require turbolinks
-//= require clean-blog
+//= require toastr
 //= require_tree .
 
+// $(document).ready(function() {
+//   $('.add-comment').keypress(function(e){
+//     if(e.which == 13){
+//       $(this).closest('form').submit();
+//     }
+//   });
+// });

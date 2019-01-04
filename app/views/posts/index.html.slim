@@ -1,21 +1,18 @@
-header.intro-header.banner-posts
-  .container
-    .row
-      .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
-        .site-heading
-          h1
-            = t ".list_post"
-          - if user_signed_in?
-            = link_to t(".create_post"), new_post_path, class: "create-post btn btn-sm btn-primary"
 .container
   .row
-    .col-lg-9.col-md-9
+    .col-lg-8.col-md-10
       - if @posts.any?
-          ul#my-posts.post-preview
-            = render partial: "post", collection: @posts, as: :post
-    .col-lg-3.col-md-3.host-post
-      h1
-        = "List hostest"
-      = render partial: "post_hostest_week", collection: @posts, as: :post
+        .post-preview
+          = render partial: "posts/post", collection: @posts, as: :post
+    .col-lg-4.col-md-2
+      .host-post
+        h1
+          = "Post"
+          = render partial: "post_hostest_week", collection: @post_hostest_week, as: :post
+      br
+      .host-post
+        h1
+          = "Category"
+          = render partial: "post_hostest_week", collection:  @category_relates, as: :post
 #infinite-scrolling
   = paginate @posts,theme: 'twitter-bootstrap-3'

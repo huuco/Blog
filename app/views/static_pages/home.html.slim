@@ -1,25 +1,7 @@
-.intro-header.banner-home
-  .container
-    .row
-      .col-md-9
-        .site-heading
-          - if user_signed_in?
-            = link_to t(".create_post"), new_post_path,
-             class: "btn btn-sm btn-primary btn-create-post"
-      .col-md-3
-        .site-heading
-          = search_form_for @search, url: posts_path do |f|
-            .form-group
-              br
-              = f.text_field :title_or_content_cont,placeholder: "Search post..." ,class: "form-control input-search"
-              br
-              = f.collection_select :categories_id_eq, Category.order(:name), :id, :name
-            = f.submit "search", class: "btn btn-primary btn-search"
-- if user_signed_in?
-  .container
-    .row
-      .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
-          ul#my-items.post-preview
-
-          #infinite-scrolling
+.container
+  .row
+    .col-lg-8.col-md-10
+      - if @posts.any?
+        .post-preview
+          = render partial: "posts/post", collection: @posts, as: :post
 

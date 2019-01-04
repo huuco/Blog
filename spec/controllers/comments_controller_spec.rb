@@ -3,14 +3,14 @@ RSpec.describe CommentsController, type: :controller do
   describe "before action :load_post" do
     context "before login" do
       it "is expected to define before action" do
-        expect{assigns(:user).to use_before_action :load_post}
+        expect{assigns(:post).to use_before_action :load_post}
       end
     end
   end
   describe "before action :load_comment" do
     context "before load_comment" do
       it "is expected to define before action" do
-        expect{assigns(:user).to use_before_action :load_comment}
+        expect{assigns(:comment).to use_before_action :load_comment}
       end
     end
   end

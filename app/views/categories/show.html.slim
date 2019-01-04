@@ -1,17 +1,11 @@
-header.intro-header.banner-posts
-  .container
-    .row
-      .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
-        .site-heading
-          h1
-            = t ".your_life"
-          - if user_signed_in?
-            = link_to "create_post", new_post_path,class: "create-post btn btn-sm btn-primary"
-          span.subheading
-            = t ".quote"
 .container
   .row
     .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+      h1
+        = "Post of Category"
+.container
+  .row
+    .col-lg-8.col-lg-offset-1.col-md-10.col-md-offset-1
       - if @category.posts.any?
-        ul.post-preview
-          = render @category.posts.sort_by_updated
+          .post-preview
+            = render @category.posts.sort_by_updated

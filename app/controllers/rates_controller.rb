@@ -30,10 +30,6 @@ class RatesController < ApplicationController
   end
  end
 
- def destroy
-
- end
-
  private
 
  def load_post

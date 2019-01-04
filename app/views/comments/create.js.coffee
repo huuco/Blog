@@ -1,2 +1,2 @@
-$(".comment-list").prepend("<%= j render partial: 'comments/comment', locals: {comment: @comment} %>");
-$("#comment_list").val("");
+$('#form-comment-<%= @comment.id %>').append("<%= j render(@comment) %>");
+$('#form-comment form textarea').val('');

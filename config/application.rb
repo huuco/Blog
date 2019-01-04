@@ -17,6 +17,6 @@ module Blog
     # the framework and any gems in your application.
     config.autoload_paths += %W(#{config.root}/lib)
     config.eager_load_paths += %W(#{config.root}/lib)
-
+    Koala.config.api_version = 'v2.0'
   end
 end

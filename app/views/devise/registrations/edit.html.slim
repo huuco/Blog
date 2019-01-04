@@ -1,11 +1,11 @@
-.yield
+.container
   h1
     = t ".edit_profile"
   .row
-    .col-md-8.col-md-offset-2
+    .col-md-8.col-md-offset-1
       .col-md-2
         = image_tag current_user.avatar.url, class: "avatar"
-      .col-md-10
+      .col-md-9.col-md-offset-1
         = form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put}) do |f|
           = devise_error_messages!
           .form-group

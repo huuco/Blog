@@ -40,6 +40,8 @@ en:
     new:
       create_post: "Create post"
       post: "Post"
+    destroy:
+      delete_success: "Delete success"
     form_post:
       title: "Title"
       category: "Category"
@@ -72,11 +74,11 @@ en:
       "4": "4"
       "5": "5"
       submit: "Submit"
-    rates:
-      create:
-        save_success: "Create success rate"
-      update:
-        update_success: "Update success rate"
+  rates:
+    create:
+      save_success: "Create success rate"
+    update:
+      update_success: "Update success rate"
   shared:
     error_messages:
       the_form: "The form"
@@ -104,3 +106,7 @@ en:
         status: "Status"
         view: "View"
         delete: "Delete"
+      update:
+        update_success: "Update success"
+      destroy:
+        delete_success: "Delete success"

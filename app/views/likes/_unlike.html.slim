@@ -1,4 +1,4 @@
 = post.likes.size
-|
+= " "
 = link_to fa_icon("heart"), post_like_path(post, current_user.likes.find_by(post_id: post.id)),
 method: :delete, remote: true,rel: "tooltip", title: t(".unlike")

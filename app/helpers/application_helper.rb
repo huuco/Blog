@@ -26,4 +26,13 @@ module ApplicationHelper
   def liked? post_id
     current_user.likes.find_by(post_id: post_id).present?
   end
+
+  def rating post_id
+    rates = post_id.rates
+    if post_id.rates.blank?
+      1
+    else
+      post_id.rates.average(:star).round(2).to_f
+    end
+  end
 end

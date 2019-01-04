@@ -3,7 +3,7 @@ RSpec.describe PostsController, type: :controller do
   describe "before action :load_post" do
     context "before load_post" do
       it "is expected to define before action" do
-        expect{assigns(:user).to use_before_action :load_post}
+        expect{assigns(:post).to use_before_action :load_post}
       end
     end
   end
@@ -16,11 +16,19 @@ RSpec.describe PostsController, type: :controller do
   end
 
   describe "GET #index" do
+    let!(:user1) {FactoryBot.create(:user, name: "co123",
+      email: Faker::Internet.email, password: "12345678", password_confirmation: "12345678")}
+    let!(:category) {FactoryBot.create :category, name: "Rubic"}
+    let!(:post) {FactoryBot.create :post, title: "sherlock home",
+     category: category, user: user1, content: "tham tu"}
     before do
       get :index
     end
     it "is expected render tempalte" do
       expect{response.to render_template :index}
+    end
+    it "is expected result find" do
+      expect{assigns(:posts).to match(Post.all)}
     end
   end
   describe "GET #new" do
@@ -32,13 +40,21 @@ RSpec.describe PostsController, type: :controller do
     end
   end
 
-  describe "POST #create" do
-    category_ids = (1..3).to_a.map do |n|
-      Category.create(name: "name")
+  describe "GET #show" do
+    let!(:params) {{id: 1}}
+    before do
+      get :show, params: params
     end
+    it "render tempalte" do
+      expect{response.to render_template :show}
+    end
+  end
+
+  describe "POST #create" do
+    let!(:category){FactoryBot.create :category, name: "the thao"}
     let!(:user) {FactoryBot.create :user}
     let!(:params) {{post: {title: "vietname vo dich aff suduki cup",
-     category_id: category_ids, content: "adads"}}}
+     category: category, content: "adads"}}}
     before do
       post :create, params: params
     end

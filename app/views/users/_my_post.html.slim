@@ -1,35 +1,39 @@
-| <div id="post-
-= post.id
-| ">
-div[div="box-post"]
-  = link_to image_tag(post.user.avatar.url, class: "avatar-post"), post.user
-  h3.user-name
-    = link_to post.user.name, post.user
-  h2.post-title
-    = link_to post.title, post
-    br
-    - if post.categories.any?
+div id="post-#{post.id}"
+  .host-post
+    p.post-meta
+      = post.status
+    .image-post
+      = link_to image_tag(post.picture.url, class: "mx-auto"), post
+    h2.card-title
+      = link_to post.title.capitalize, post
+      br
+    - if post.category.present?
       span.badge.badge-info
-        - post.categories.each do |category|
-          = link_to category.name, category
-      span.badge.badfe-info
-        = post.status
-  div
-  = social_share_button_tag(post.title, url: "https://safe-retreat-68629.herokuapp.com", desc: post.content)
-  .image-post
-    = link_to image_tag post.picture.url if post.picture?
-  p.post-meta
-    = post.updated_at.strftime(Settings.post.date)
-  span.glyphicon.glyphicon-comment
-  = post.comments.size
-  - if post.user == current_user
-  span
-    = link_to edit_post_path(post) do
-      span.glyphicon.glyphicon-pencil
-    = link_to post, method: :delete, remote: true,data: {confirm: t(".sure")} do
-      span.glyphicon.glyphicon-remove
-    span.col-md-1 id="btn-like-#{post.id}"
+        = link_to post.category_name, post.category
+    h3.card-body
+      = truncate post.content
+    p.post-meta
+      = "Posted by "
+      = post.user.name
+      = " on "
+      = post.updated_at.strftime(Settings.post.date)
+    - image = post.user.avatar.present? ? post.user.avatar.url : "cat.jpg"
+    = image_tag(image, class: "avatar-my-post")
+    p
+      = social_share_button_tag(post.title, url: "https://safe-retreat-68629.herokuapp.com", desc: post.content)
+    span.glyphicon.glyphicon-comment
+      = post.comments.size
+    = " "
+    span
+    - if post.user == current_user
+      = link_to edit_post_path(post) do
+        span.glyphicon.glyphicon-pencil
+      = " "
+      = link_to post, method: :delete, data: {confirm: t(".sure")} do
+        span.glyphicon.glyphicon-remove
+    .col-md-2 id="btn-like-#{post.id}"
       - if user_signed_in? && liked?(post.id)
         = render partial: "likes/unlike", locals: {post: post}
       - else
         = render partial: "likes/like", locals: {post: post}
+hr

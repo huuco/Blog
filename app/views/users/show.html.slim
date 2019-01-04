@@ -1,18 +1,8 @@
-= provide :title, t(".show")
-.intro-header.banner-home
-  .container
-    .row
-      .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
-        .site-heading
-          h1
-            = "My post"
-          hr.small
-          span.subheading
-            = "Quote"
-.row
-  .col-lg-7.col-lg-offset-3
-  - if @user.posts.any?
-    ul#my-posts.post-preview
-      = render partial: "users/my_post", collection: @user.posts, as: :post
-  .col-lg-3
-    = render "profile"
+.container
+  .row
+    .col-lg-7.col-lg-offset-3
+    - if @user.posts.any?
+      #my-posts.post-preview.col-md-7
+        = render partial: "users/my_post", collection: @user.posts, as: :post
+    .col-lg-3
+      = render "profile"

@@ -3,6 +3,6 @@ FactoryBot.define do
     title {"title"}
     content {"content"}
     user_id {"1"}
-    categories {"1"}
+    category_id {"1"}
   end
 end

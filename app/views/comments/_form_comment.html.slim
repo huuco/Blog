@@ -1,9 +1,6 @@
-#add-comment
-  = form_for [@post, resource_comment], remote: true do |f|
-    .input-group
-      = f.text_field :content, class: "form-control animated",
-               placeholder: t(".write_comment"), cols: "50", rows: "5",
-               id: "new-content-comment", autocomplete: :off
-      span.input-group-addon
-        = f.submit t(".comment"),
-                 id: "comment_submit", class: "btn-success"
+span#form-comment
+  = form_for [post, resource_comment] do |f|
+    = f.hidden_field :parent_id, value: parent_id
+    = f.text_area :content,placeholder: t(".write_comment"),
+     rows: "1",class: "form-control add-comment", autocomplete: :off
+    = f.button "comment", type: :submit, class: "btn btn-primary btn-sm"

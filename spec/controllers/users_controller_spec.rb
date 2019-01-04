@@ -31,4 +31,14 @@ RSpec.describe UsersController, type: :controller do
        expect{assigns(:user).to eq(User.find_by id: params[:id])}
      end
   end
+
+  describe "GET #edit" do
+    it "is expected to set user instance variable" do
+      expect{assigns(:user).to eq(User.find_by id: params[:id])}
+    end
+
+    it "is expected to render edit template" do
+      expect{response.to render_template :edit}
+    end
+  end
 end

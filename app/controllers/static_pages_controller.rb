@@ -1,9 +1,5 @@
 class StaticPagesController  < ApplicationController
   def home
-
-  end
-
-  def contact
-
+    @posts = Post.post_filter.page(params[:page]).per Settings.post.paginate_post
   end
 end

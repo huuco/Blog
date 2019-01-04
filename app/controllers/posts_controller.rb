@@ -1,16 +1,14 @@
 class PostsController < ApplicationController
-  before_action :load_post, except: %i(create new index)
   before_action :authenticate_user!, except: %i(index show)
+  before_action :load_post, except: %i(create new index)
 
   def index
     @search = Post.ransack params[:q]
     @search.sorts = Settings.default_sort if @search.sorts.empty?
-    @posts = @search.result.includes(:categories, :post_categories).page(params[:page]).per Settings.post.paginate_post
-    @post_hostest_week =  Post.show_post_host
-    @list_post_hostests = []
-    @post_hostest_week.each do |post|
-      @list_post_hostests.push Post.find_by id: post.id
-    end
+    @posts = @search.result.post_filter.joins(:category)
+    .page(params[:page]).per Settings.post.paginate_post
+    @post_hostest_week =  Post.post_filter.show_post_host
+    @category_relates = Post.post_filter.show_blog_category_interested
   end
 
   def new
@@ -25,6 +23,7 @@ class PostsController < ApplicationController
     else
       render :new
     end
+
   end
 
   def edit; end
@@ -41,24 +40,29 @@ class PostsController < ApplicationController
 
   def show
     @rates = @post.rates
+    @supports = Supports::Post.new @post
+    @comment = Comment.new
+    @comments = @post.comments
+    @comments_ajax = @comments.as_json
   end
 
   def destroy
     if @post.destroy
       respond_to do |format|
-        format.js
+        format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+        format.js { head :no_content }
       end
     else
-      flash[:danger] = t ".fail_delete"
+      flash[:danger] = t ".failed_delete"
+      redirect_to root_url
     end
-    redirect_to posts_path
   end
 
   private
 
   def post_params
     params.require(:post).permit :title, :content, :picture,
-     :picture_cache, :list_categories
+     :picture_cache, :category_id
   end
 
   def load_post

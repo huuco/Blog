@@ -1,0 +1,12 @@
+.container
+  .row
+    .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+      h1
+        = t ".list_category"
+.container
+  .row
+    .col-md-10.col-md-offset-1
+      -if @categories.any?
+        ul.list-group.list-group-flush
+          = render partial: "category", collection: @categories, as: :category
+      = paginate @categories, theme: 'twitter-bootstrap-3'
