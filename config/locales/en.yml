@@ -33,6 +33,10 @@ en:
       email: "E-mail"
       phone: "Phone"
   posts:
+    create:
+      create_post: "Create success post"
+    update:
+      update_success: "Update success post"
     new:
       create_post: "Create post"
       post: "Post"
@@ -55,6 +59,7 @@ en:
       category: "Category"
       edit_post: "Edit post"
       delete: "Delete"
+      sure: "You sure delete"
       comment: "Comment"
       edit_profile: "Edit profie"
     review_form:
@@ -67,6 +72,11 @@ en:
       "4": "4"
       "5": "5"
       submit: "Submit"
+    rates:
+      create:
+        save_success: "Create success rate"
+      update:
+        update_success: "Update success rate"
   shared:
     error_messages:
       the_form: "The form"
@@ -79,3 +89,18 @@ en:
     form_comment:
       comment: "Comment"
       write_comment: "Write comment"
+  likes:
+    like:
+      like: "like"
+    unlike:
+      unlike: "unlike"
+  admin:
+    posts:
+      show:
+        save: "Save"
+      index:
+        title: "Title"
+        category: "Category"
+        status: "Status"
+        view: "View"
+        delete: "Delete"

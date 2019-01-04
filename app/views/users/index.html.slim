@@ -3,12 +3,12 @@
     .row
       .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
         .site-heading
-          h1 = t ".your_secret"
+          h1 = t ".list_user"
           hr.small
           span.subheading = t ".quote"
 .container
   .row
-    .col-lg-12
+    .col-lg-10.panel.panel-primary
       .main-box-body.clearfix
         .table-responsive
           table#my-users.table.user-list
@@ -25,4 +25,4 @@
                 div
                 = render @users
 #infinite-scrolling
-  = paginate @users
+  = paginate @users, theme: 'twitter-bootstrap-3'

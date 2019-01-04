@@ -1,0 +1,10 @@
+- flash.each do |message_type, message|
+  #flash.flash
+    - if message_type == "notice"
+      - message_type = "info"
+    - else message_type == "alert"
+      - message_type = "warning"
+    div class=("alert alert-#{message_type}")
+      a.close data-dismiss="alert" href="#"  ×
+      ul
+        li= message

@@ -1,0 +1,4 @@
+= post.likes.size
+|
+= link_to fa_icon("heart-o"), post_likes_path(post), method: :post, remote: true,
+rel: "tooltip",title: t(".like"), class: "text-dark"

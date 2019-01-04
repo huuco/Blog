@@ -58,11 +58,11 @@ ul#my-posts.post-preview {
 }
 
 .banner-contact {
-  background-image: image-url('/assets/back.jpg');
+  background-image: image-url('/assets/download.jpeg');
 }
 
 .banner-posts {
-  background-image: image-url('/assets/posts.jpg');
+  background-image: image-url('/assets/post.jpg');
 }
 
 .post {
@@ -77,7 +77,7 @@ ul#my-posts.post-preview {
 }
 
 .yield {
-  background: image-url('/assets/back.jpg') no-repeat;
+  background: image-url('/assets/wallpaper.jpg') no-repeat;
   background-size: cover;
   padding-top: 60px;
   color: $white;
@@ -433,4 +433,34 @@ h2.title-edit {
 }
 #comment_submit {
   border-radius: 4px;
+}
+#q_categories_id_eq {
+  border-radius: 4px;
+  width: 56%;
+  float: left;
+  padding: 5px;
+  margin-top: -20px;
+  background-color:white;
+  color:#7373ADFF;
+  white-space:normal;
+  overflow: scroll;
+}
+#q_title_or_content_cont {
+  width: 100%;
+  padding: 5px;
+  margin-left: -100px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px black;
+
+}
+.btn-create-post {
+  margin-left: 163px;
+  border-radius: 4px;
+}
+.btn-search {
+  border-radius: 4px;
+  height: 40px;
+  padding-top: 10px;
+  margin-top: -150px;
+  margin-right: -90px;
 }
