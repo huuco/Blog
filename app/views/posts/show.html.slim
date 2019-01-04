@@ -4,7 +4,7 @@ header.intro-header.banner-posts
       .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
         .post-heading.word-break
           h2
-            = @post.title
+            = @post.title.capitalize
           p
             = simple_format @post.content
           span.meta
@@ -18,7 +18,6 @@ header.intro-header.banner-posts
                 - @post.categories.each do |category|
                   = link_to category.name, category
                   | ,
-
           br
           span
           - if @post.user == current_user
@@ -33,7 +32,7 @@ article
         h2.section-heading
         hr
         div
-          = social_share_button_tag(@post.title, url: post_url(@post), desc: @post.content)
+          = social_share_button_tag(@post.title, url:"https://safe-retreat-68629.herokuapp.com", desc: @post.content)
         h2
           = t ".comment"
         .form-comment
@@ -52,5 +51,5 @@ article
         .user-info-row
           - if current_user == @post.user
             = link_to t(".edit_profile"), edit_user_registration_path(@post.user),
-            remote: true, class: "btn btn-primary button_text profile"
+             class: "btn btn-primary button_text profile"
       = render "posts/review_form"

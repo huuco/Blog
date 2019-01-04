@@ -3,8 +3,10 @@ picture_default: "post.jpg"
 post:
   date: "%B %d, %Y"
   maximum_title: 100
+  paginate_post: 2
 rate:
   minimum_rate: 1
   maximum_rate: 5
   maximum_content: 50
 default_sort: "created_at asc"
+delay_times: 5

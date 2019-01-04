@@ -5,11 +5,11 @@ class PostsController < ApplicationController
   def index
     @search = Post.ransack params[:q]
     @search.sorts = Settings.default_sort if @search.sorts.empty?
-    @posts = @search.result.includes(:categories, :post_categories)
-    @post_hostest_week = Post.show_post_host
-    @list_post_hostest = []
+    @posts = @search.result.includes(:categories, :post_categories).page(params[:page]).per Settings.post.paginate_post
+    @post_hostest_week =  Post.show_post_host
+    @list_post_hostests = []
     @post_hostest_week.each do |post|
-      @list_post_hostest.push Post.find_by id: post.id
+      @list_post_hostests.push Post.find_by id: post.id
     end
   end
 

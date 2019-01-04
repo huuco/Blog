@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users,:controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   root "static_pages#home"
   get "/contact", to: "static_pages#contact"
 
@@ -10,10 +10,12 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments
     resources :rates
+    resources :likes
   end
 
   namespace :admin do
     root "posts#index"
     resources :posts
   end
+  get "*path", to: redirect("/")
 end

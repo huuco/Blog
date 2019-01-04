@@ -13,6 +13,11 @@ class ApplicationController < ActionController::Base
       root_path
     end
   end
+
+  def liked? post_id
+    current_user.likes.find_by(post_id: post_id).present?
+  end
+
   protected
 
   def configure_permitted_parameters
@@ -22,13 +27,12 @@ class ApplicationController < ActionController::Base
       keys: %i(name birthday phone avatar avatar_cache)
   end
 
-
   def load_info resource
     return if resource
     render file: "public/404.html", status: :not_found, layout: false
   end
+
   def set_search
     @search = Post.ransack(params[:q])
   end
-
 end
