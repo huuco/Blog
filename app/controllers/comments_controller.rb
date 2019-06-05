@@ -5,41 +5,42 @@ class CommentsController < ApplicationController
 
 
   def create
-    if params[:comment][:parent_id].present?
-      parent = Comment.find_by id: params[:comment].delete(:parent_id)
-      @comment = parent.children.build(comment_params)
-      @comment.post = @post
-      @comment.user = current_user
-    else
-      @comment = @post.comments.build comment_params
-      @comment.user = current_user
-    end
-
+    @comment = @post.comments.build comment_params
+    @comment.user = current_user
     if @comment.save
       respond_to do |format|
-        format.html{redirect_back(fallback_location: root_path)}
         format.js
       end
     end
   end
 
+  def new
+    @comment = @commentable.comments.new
+    @comment.parent_id = params[:parent_id]
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
   def edit
-    respond_to {|format| format.js}
+    respond_to do |format|
+      format.js
+    end
   end
 
   def update
     if @comment.update_attributes comment_params
-      respond_to {|format| format.js}
+      respond_to do |format|
+        format.js
+      end
     end
   end
 
   def destroy
-    @comment.descendants.each do |comment_des|
-      comment_des.destroy
-    end
     @comment.destroy
     respond_to do |format|
-      format.html{redirect_back(fallback_location: root_path)}
+      format.js
     end
   end
 
@@ -57,5 +58,10 @@ class CommentsController < ApplicationController
   def load_comment
     @comment = @post.comments.find_by id: params[:id]
     load_info @comment
+  end
+
+  def load_commentable
+    resource, id = request.path.split('/')[1, 2]
+    @commentable = resource.singularize.classify.constantize.find(id)
   end
 end

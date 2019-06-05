@@ -1,4 +1,4 @@
-.comment-user id="form-comment-#{comment.id}"
+.comment-user id="comment-#{comment.id}"
   .row
     = link_to image_tag(comment.user.avatar.url, class: "comment-avatar"),comment.user
     .word-break
@@ -10,8 +10,9 @@
       = time_ago_in_words comment.created_at
       - if comment.user == current_user
         div class="edit-comment-#{comment.id}"
-          = link_to t(".edit"),edit_post_comment_path(@post.id, comment),remote: true, class: "text-primary edit-comment"
+          = link_to t(".edit"),edit_post_comment_path(@post, comment),remote: true, class: "text-primary edit-comment"
           = link_to t(".delete"), [comment.post, comment], method: :delete, remote: true,
                   data: {confirm: t(".sure")}, class: "text-primary delete-comment"
-      .col-md-10
-        = render "comments/form_comment", post: @post,parent_id: comment.id,comment: comment
+      = link_to 'repply', new_comment_comment_path(comment, parent_id: @post.id)
+      - unless comment.comments.empty?
+        = render comment.comments

@@ -43,7 +43,7 @@ class PostsController < ApplicationController
     @supports = Supports::Post.new @post
     @comment = Comment.new
     @comments = @post.comments
-    @comments_ajax = @comments.as_json
+    # @comments_ajax = @comments.as_json
   end
 
   def destroy

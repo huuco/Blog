@@ -10,9 +10,13 @@ Rails.application.routes.draw do
     resources :rates
     resources :likes
   end
+  resources :comments do
+    resources :comments
+  end
   namespace :admin do
-    root "posts#index"
+    root "comments#new"
     resources :posts
+    resources :comments
   end
   get "*path", to: redirect("/")
 end

@@ -54,6 +54,5 @@ jQuery(document).on("turbolinks:load", function() {
       $("#category_name").val(input);
     }
   });
-  $(".comment-list-fuck")
 });
 

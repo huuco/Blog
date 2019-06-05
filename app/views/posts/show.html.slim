@@ -44,9 +44,11 @@ article
             = social_share_button_tag(@post.title, url:"https://safe-retreat-68629.herokuapp.com", desc: @post.content)
           h2
             = t ".comment"
-            = render "comments/form_comment", post: @post, parent_id: nil, comment: @comment
-            .comment-list id="comment-list-fuck" data-comment="#{@comments_ajax}"
-              / = comments_tree_for @supports.comments_tree.hash_tree, @post, @supports.comment
+            .form-comment
+              = render "comments/form_comment"
+            #comment_list.comment-list
+            = render partial: "comments/comment",collection: @post.comments, as: :comment
+            / .comment-list id="comment-list-fuck" data-comment="#{@comments_ajax}"
           h2 id="test-fuck"
           .group-tabs
             ul.nav.nav-tabs role="tablist"

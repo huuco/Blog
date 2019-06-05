@@ -1,6 +1,5 @@
-span#form-comment
-  = form_for [post, resource_comment] do |f|
-    = f.hidden_field :parent_id, value: parent_id
+span
+  = form_for [@post, resource_comment], remote: true do |f|
     = f.text_area :content,placeholder: t(".write_comment"),
      rows: "1",class: "form-control add-comment", autocomplete: :off
     = f.button "comment", type: :submit, class: "btn btn-primary btn-sm"
