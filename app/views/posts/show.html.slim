@@ -32,24 +32,17 @@ article
     .row
       .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
         .host-post
-          - @average_rate = rating @post
-          | <div class="average-review-rating" data-score=
-          = @average_rate
-          | >
-          small.col-md-2 id="btn-like-#{@post.id}"
-            - if user_signed_in? && liked?(@post.id)
-              = render partial: "likes/unlike", locals: {post: @post}
-            - else
-              = render partial: "likes/like", locals: {post: @post}
-            = social_share_button_tag(@post.title, url:"https://safe-retreat-68629.herokuapp.com", desc: @post.content)
-          h2
-            = t ".comment"
-            .form-comment
-              = render "comments/form_comment"
-            #comment_list.comment-list
-            = render partial: "comments/comment",collection: @post.comments, as: :comment
-            / .comment-list id="comment-list-fuck" data-comment="#{@comments_ajax}"
-          h2 id="test-fuck"
+          / - @average_rate = rating @post
+          / | <div class="average-review-rating" data-score=
+          / = @average_rate
+          / | >
+          / small.col-md-2 id="btn-like-#{@post.id}"
+          /   - if user_signed_in? && liked?(@post.id)
+          /     = render partial: "likes/unlike", locals: {post: @post}
+          /   - else
+          /     = render partial: "likes/like", locals: {post: @post}
+          /   = social_share_button_tag(@post.title, url:"https://safe-retreat-68629.herokuapp.com", desc: @post.content)
+          = render "comments/widget", commentable: @post
           .group-tabs
             ul.nav.nav-tabs role="tablist"
               li.active role="presentation"

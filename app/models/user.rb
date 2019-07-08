@@ -6,7 +6,7 @@ class User < ApplicationRecord
          :confirmable,:omniauthable, omniauth_providers: [:facebook]
   has_many :posts, dependent: :destroy
   has_many :rates, dependent: :destroy
-  has_many :comments, dependent: :destroy
+  has_many :comments, as: :commentable, dependent: :destroy
   has_many :likes, dependent: :destroy
 
   validates :name, presence: true

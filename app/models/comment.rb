@@ -1,11 +1,6 @@
 class Comment < ApplicationRecord
   belongs_to :user
-  belongs_to :post
-  belongs_to :comment
-  belongs_to :commentable, :polymorphic => true
-  has_many :comments, :as => :commentable
-  validates :user, presence: true
-  validates :post, presence: true
-  validates :content, presence: true
-  attr_accessor :name, :body
+  belongs_to :commentable, polymorphic: true
+  belongs_to :parent, class_name: "Comment", optional: true
+  has_many :replies, class_name: "Comment", foreign_key: :parent_id, dependent: :destroy
 end

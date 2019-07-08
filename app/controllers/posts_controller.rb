@@ -41,9 +41,6 @@ class PostsController < ApplicationController
   def show
     @rates = @post.rates
     @supports = Supports::Post.new @post
-    @comment = Comment.new
-    @comments = @post.comments
-    # @comments_ajax = @comments.as_json
   end
 
   def destroy

@@ -1,18 +1,14 @@
-.comment-user id="comment-#{comment.id}"
-  .row
-    = link_to image_tag(comment.user.avatar.url, class: "comment-avatar"),comment.user
-    .word-break
-      p.comment-name
-        = link_to comment.user.name, comment.user
-      p.comment-title
-        = comment.content
-    .sub-text
-      = time_ago_in_words comment.created_at
-      - if comment.user == current_user
-        div class="edit-comment-#{comment.id}"
-          = link_to t(".edit"),edit_post_comment_path(@post, comment),remote: true, class: "text-primary edit-comment"
-          = link_to t(".delete"), [comment.post, comment], method: :delete, remote: true,
-                  data: {confirm: t(".sure")}, class: "text-primary delete-comment"
-      = link_to 'repply', new_comment_comment_path(comment, parent_id: @post.id)
-      - unless comment.comments.empty?
-        = render comment.comments
+li.comment id="comment_#{comment.id}" 
+  .comment-content
+    = comment.content
+  .comment-info
+    small
+      |  -
+      |  #{comment.user.name} •
+      |  #{localize(comment.created_at, format: :long)} •
+      |  #{link_to "Edit", edit_polymorphic_path([comment.commentable, comment]), class: 'edit-comment-link', remote: true} •
+      |  #{link_to "Destroy", [comment.commentable, comment], method: :delete, class: 'delete-comment-link', data:{confirm:"Are your sure?"}, remote: true} •
+      |  #{link_to "Reply", polymorphic_path([:reply, comment.commentable, comment]), class: 'reply-comment-link', remote: true}
+  - if comment.replies.any?
+    ul
+      = render comment.replies

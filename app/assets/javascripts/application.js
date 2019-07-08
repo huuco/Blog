@@ -20,10 +20,3 @@
 //= require toastr
 //= require_tree .
 
-// $(document).ready(function() {
-//   $('.add-comment').keypress(function(e){
-//     if(e.which == 13){
-//       $(this).closest('form').submit();
-//     }
-//   });
-// });

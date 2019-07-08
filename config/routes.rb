@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   resources :users
   resources :categories
   resources :posts do
-    resources :comments
+    resources :comments do
+      member do
+        get :reply
+      end
+    end
     resources :rates
     resources :likes
   end

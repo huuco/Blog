@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user
   belongs_to :category
-  has_many :comments, dependent: :destroy
+  has_many :comments, as: :commentable, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :rates, dependent: :destroy
   validates :title, presence: true, length: {maximum: Settings.post.maximum_title}

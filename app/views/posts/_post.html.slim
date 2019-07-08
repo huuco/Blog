@@ -21,9 +21,6 @@ div id="post-#{post.id}"
       - else
         = render partial: "likes/like", locals: {post: post}
     span.glyphicon.glyphicon-comment
-      = post.comments.size
-    = " "
-    span
     - if post.user == current_user
       = link_to edit_post_path(post) do
         span.glyphicon.glyphicon-pencil
