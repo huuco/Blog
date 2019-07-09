@@ -5,7 +5,7 @@ ruby "2.5.1"
 
 gem "bootsnap", ">= 1.1.0", require: false
 gem "bootstrap-kaminari-views"
-gem "bootstrap-sass", "3.3.7"
+gem "bootstrap-sass"
 gem "carrierwave"
 gem "ckeditor"
 gem "closure_tree"
