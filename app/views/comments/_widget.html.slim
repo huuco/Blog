@@ -1,7 +1,7 @@
 .comments-widget id="comments-widget-of-commentable-#{commentable.id}" 
   h2.comments-header
     | Comments
-    small id="comments-count-of-commentable-#{commentable.id}" = commentable.comments.size
+    / small id="comments-count-of-commentable-#{commentable.id}" = commentable.comments.size
   ul.comments-list
     = render commentable.comments.where(parent: nil)
   /! comment-form

@@ -1,8 +1,7 @@
 .container
   .row
-    .col-lg-7.col-lg-offset-3
+    .col-lg-12
     - if @user.posts.any?
-      #my-posts.post-preview.col-md-7
+      #my-posts.post-preview.col-md-9.col-lg-offset-1
         = render partial: "users/my_post", collection: @user.posts, as: :post
-    .col-lg-3
-      = render "profile"
+    

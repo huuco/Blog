@@ -26,23 +26,25 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    respond_to do |format|
-      format.js
-    end
   end
 
   def update
     if @comment.update_attributes comment_params
       respond_to do |format|
+        format.html { redirect_to @commentable }
+        format.json { render json: @coment}
         format.js
       end
     end
   end
 
   def destroy
-    @comment.destroy
-    respond_to do |format|
-      format.js
+    if @comment.errors.empty? && @comment.destroy
+      respond_to do |format|
+        format.html { redirect_to @commentable }
+        format.json { head :no_content}
+        format.js
+      end
     end
   end
 

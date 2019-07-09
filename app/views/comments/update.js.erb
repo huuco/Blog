@@ -1,5 +1,8 @@
-<% if @comment.errors.blank? %>
-  $("#comment-<%= @comment.id %>").replaceWith("<%= j render 'comments/comment', comment: @comment %>");
-  toastr.options.timeOut = <%= Settings.toastr_timeout %>;
-  toastr.success("<%= "update success" %>");
+$comment_form = $("#comment_<%= @comment.id %> .comment-form form")
+$comment = $("#comment_<%= @comment.id %>");
+<% if @comment.errors.empty? %>
+  $comment.html("<%= j render @comment %>").find('li').last().effect('highlight', {}, 1000);
+  $comment_form[0].remove();
+<% else %>
+   $comment_form.before("<div class='alert alert-warning alert-dismissible fade in' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><%= @comment.errors.full_messages.join('') %></div>").prev().delay(1500).slideUp();
 <% end %>

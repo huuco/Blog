@@ -3,15 +3,16 @@
 @import 'variable';
 @import 'social-share-button';
 
-/*
+
 @media screen and (min-width: 360px) {
  .image-post {
     img {
       height: auto;
       width: 50%;
+      margin-left: 66px;
     }
   }
-}*/
+}
 
 @mixin background-tile {
   box-sizing: border-box;
@@ -19,6 +20,7 @@
   border-radius: 5px;
   box-shadow: 3px 3px 5px 6px #ccc;
   padding: 1.5em 1.25em;
+  margin-top: 10px;
 }
 .host-post {
   @include background-tile;
@@ -166,10 +168,11 @@ h1 {
 }
 
 
-.avatar {
+.avatar > img {
   border-radius:50%;
-  height: 130px;
-  width: 130px;
+  height: 50px;
+  width: 50px;
+  margin-left: -20px;
 }
 
 .button_text {
@@ -225,40 +228,6 @@ h1 {
 .word-break {
   word-break: break-word;
   margin-left: 10px;
-}
-
-.comment-user {
-  position: relative;
-
-  .sub-text {
-    color: $gray-light;
-    display: block;
-    font-family: verdana;
-    font-size: 11px;
-    margin-left: 80px;
-  }
-
-  .comment-avatar {
-    margin-top: 20px;
-    position: absolute;
-    margin-left: 20px;
-    width: 60px;
-  }
-
-  .comment-name {
-    color: $blue;
-    font-size: 20px;
-    margin: 15px 0 0 70px;
-
-    a {
-      color: $blue;
-    }
-  }
-
-  .comment-title {
-    font-size: 20px;
-    margin: 0 70px;
-  }
 }
 
 .user-avatar {
@@ -402,37 +371,9 @@ h2.title-edit {
   font-size: 15px;
   font-style: italic;
  }
-#comment_content {
-  width: 100%;
-  padding: 7px 7px;
-  margin: 4px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  font-size: 15px;
-}
-.update-comment {
-  border-radius: 4px;
-  padding: 10px;
-
-}
-
-.edit-comment {
-  font-size: 14px;
-  font-family: inherit;
-  margin-right: 4px;
-  &:hover {
-    text-decoration: underline;
+ .comment {
+   list-style: none;
   }
+.comment-content {
+  font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
 }
-.delete-comment {
-  font-size: 14px;
-  font-family: inherit;
-  &:hover {
-    text-decoration: underline;
-  }
-}
-.replies {
-   margin-left: 50px;
- }

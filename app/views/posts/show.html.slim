@@ -57,21 +57,3 @@ article
                 .show_rates
                   = render partial: "rates/rate", collection: @rates, as: :rate
               #description.tab-pane role="tabpanel" Description
-          hr
-        .hot-post
-          .user-info-row
-            .user-avatar
-              = link_to image_tag(@post.user.avatar.url, class: "avatar-show"), @post.user
-            .user-name
-              div
-                = link_to @post.user.name, @post.user
-              div
-                = @post.user.email
-              div
-                = @post.user.likes.size
-                = " "
-                = fa_icon("heart-o")
-          .user-info-row
-            - if current_user == @post.user
-              = link_to t(".edit_profile"), edit_user_registration_path(@post.user),
-               class: "btn btn-primary button_text profile"
