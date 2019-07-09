@@ -16,7 +16,7 @@ div id="post-#{post.id}"
       = "Posted by "
       = post.user.name
       = " on "
-      = post.updated_at.strftime(Settings.post.date)
+      = post.updated_at.strftime("%B %e, %Y at %I:%M %p")
     - image = post.user.avatar.present? ? post.user.avatar.url : "cat.jpg"
     = image_tag(image, class: "avatar-my-post")
 /     p

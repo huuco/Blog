@@ -9,7 +9,7 @@ RSpec.describe Post, type: :model do
       it {is_expected.to validate_presence_of :content}
       it {is_expected.to validate_presence_of :category}
       it {is_expected.to validate_presence_of :user}
-      it {is_expected.to validate_length_of(:title).is_at_most Settings.post.maximum_title}
+      it {is_expected.to validate_length_of(:title).is_at_most 50}
     end
     describe "associations" do
       it  {is_expected.to have_many(:rates).dependent :destroy}

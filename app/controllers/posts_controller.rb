@@ -4,9 +4,9 @@ class PostsController < ApplicationController
 
   def index
     @search = Post.ransack params[:q]
-    @search.sorts = Settings.default_sort if @search.sorts.empty?
+    @search.sorts = Post.order(created_at: :desc) if @search.sorts.empty?
     @posts = @search.result.post_filter.joins(:category)
-    .page(params[:page]).per Settings.post.paginate_post
+    .page(params[:page]).per 10
     @post_hostest_week =  Post.post_filter.show_post_host
     @category_relates = Post.post_filter.show_blog_category_interested
   end

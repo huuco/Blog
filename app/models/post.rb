@@ -4,7 +4,7 @@ class Post < ApplicationRecord
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :rates, dependent: :destroy
-  validates :title, presence: true, length: {maximum: Settings.post.maximum_title}
+  validates :title, presence: true, length: {maximum: 50}
   validates :content, presence: true
   validates :user, presence: true
   validates :category, presence: true

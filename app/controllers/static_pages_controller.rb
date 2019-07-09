@@ -1,5 +1,5 @@
 class StaticPagesController  < ApplicationController
   def home
-    @posts = Post.post_filter.page(params[:page]).per Settings.post.paginate_post
+    @posts = Post.post_filter.page(params[:page]).per 10
   end
 end

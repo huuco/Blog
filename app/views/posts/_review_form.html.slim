@@ -13,8 +13,8 @@
             label
               = t ".quantity"
             .form-group
-              =f.hidden_field :star, value: Settings.rate.maximum_rate
-              - Settings.rate.maximum_rate.times do |i|
+              =f.hidden_field :star, value: 5
+              - 5.times do |i|
                 div class=("star #{"star_on" if i + 1 == 1}")
                   i.fa.fa-star value=("#{i + 1}")
             .form-group

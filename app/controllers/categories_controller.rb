@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
 
   def index
-    @categories = Category.by_created_at.page(params[:page]).per Settings.category.paginate_category
+    @categories = Category.by_created_at.page(params[:page]).per 5
   end
 
 

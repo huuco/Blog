@@ -3,11 +3,11 @@ class Rate < ApplicationRecord
   belongs_to :post
 
   validates :star, presence: true, numericality: {
-    greater_than_or_equal_to: Settings.rate.minimum_rate,
-    less_than_or_equal_to: Settings.rate.maximum_rate
+    greater_than_or_equal_to: 1,
+    less_than_or_equal_to: 5
   }
   validates :content, presence: true,
-   length: {maximum: Settings.rate.maximum_content}
+   length: {maximum: 100}
   delegate :name, to: :user, prefix: true, allow_nil: true
 
 end
